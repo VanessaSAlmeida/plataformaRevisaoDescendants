@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Auradon Academy</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:wght@400;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div id="welcomeScreen">
+    <div class="welcome-card">
+        <h1 style="text-align: center">
+            👑 Auradon Academy
+        </h1>
+
+        <p class="academy-subtitle" style="text-align: center">
+            Plataforma de Revisão para o
+            5º Ano do Ensino Fundamental
+        </p>
+
+        <!-- ALUNO RECORRENTE -->
+        <div id="returningStudentPanel"
+             class="returning-panel hidden">
+
+            <h2 id="returningStudentSalute" style="margin-top: 10px">
+                👋 Bem-vindo(a) de volta!
+            </h2>
+
+            <div class="returning-house">
+                <div id="returningCharacterIcon"
+                     class="returning-house-icon">
+                    👑
+                </div>
+
+                <h3 id="returningStudentName">
+                    Aluno
+                </h3>
+
+                <p id="returningCharacterName">
+                    Personagem
+                </p>
+            </div>
+
+            <div class="returning-stats">
+                <div class="info-card">
+
+            <span>
+                📚 Última matéria estudada
+            </span>
+                    <strong id="lastSubjectLabel">
+                        Nenhuma
+                    </strong>
+                </div>
+                <div class="info-card">
+
+            <span>
+                📊 Progresso
+            </span>
+                    <strong id="lastProgressLabel">
+                        0%
+                    </strong>
+                </div>
+                <div class="info-card">
+
+            <span>
+                🏆 Melhor desempenho
+            </span>
+                    <strong id="bestSubjectLabel">
+                        -
+                    </strong>
+                </div>
+            </div>
+
+            <h3 class="subject-selection-title">
+                📚 O que vamos estudar hoje?
+            </h3>
+
+            <div id="returningSubjectGrid">
+                <!-- preenchido pelo JS -->
+            </div>
+
+            <div class="returning-actions">
+                <button id="continueJourneyBtn" type="button">
+                    👑 Continuar em Auradon
+                </button>
+
+                <button id="changeStudentBtn" type="button">
+                    🔄 Trocar Aluno
+                </button>
+            </div>
+        </div>
+
+        <!-- NOVO ALUNO -->
+        <div id="newStudentPanel" style="margin-top: 20px">
+            <label for="studentNameInput" style="font-size: 1.17em; font-weight: bold;">
+                Bem-vindo(a) à Auradon Academy! Qual é o seu nome?
+            </label>
+
+            <input id="studentNameInput"
+                   type="text" style="margin-top: 15px"
+                   placeholder="Digite seu nome">
+            <h3>
+                Escolha quem vai acompanhar você:
+            </h3>
+
+            <div id="characterSelector">
+                <button class="character-btn"
+                        data-character="mal">
+                    💜 Mal
+                </button>
+
+                <button class="character-btn"
+                        data-character="evie">
+                    💙 Evie
+                </button>
+
+                <button class="character-btn"
+                        data-character="uma">
+                    🌊 Uma
+                </button>
+
+                <button class="character-btn"
+                        data-character="red">
+                    ❤️ Red
+                </button>
+            </div>
+
+            <h3>
+                O que vamos estudar hoje?
+            </h3>
+
+            <div id="subjectGrid">
+            </div>
+
+            <button id="startJourneyBtn"
+                    type="button" style="display: block; margin: 20px auto 0 auto;">
+                👑 Entrar em Auradon
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="mainContent" class="hidden">
+    <!-- HERO -->
+    <header class="hero">
+        <div class="magic-stars">
+        </div>
+
+        <div class="hero-content">
+            <div class="castle-icon" aria-hidden="true">
+                👑
+            </div>
+
+            <h1 id="courseTitle">
+                Auradon Academy
+            </h1>
+
+            <p id="courseTagline" class="course-tagline">
+                Onde aprender também é uma aventura!
+            </p>
+
+            <p id="courseSubtitle">
+                Plataforma de Revisão de Auradon
+            </p>
+
+            <div class="hero-actions">
+                <button id="backToWelcomeBtn"
+                        class="secondary-btn">
+                    👑 Trocar Matéria
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- BARRA DE PROGRESSO -->
+    <section class="progress-section">
+        <div class="progress-info">
+            <span>
+                Progresso
+            </span>
+
+            <span id="progressText">
+                0%
+            </span>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progressFill"
+                 class="progress-fill">
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU DE NAVEGAÇÃO -->
+    <nav id="topicNav"
+         class="topic-nav">
+        <!-- preenchido pelo JavaScript -->
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <main class="container">
+        <!-- PÁGINA INICIAL -->
+        <section
+                id="homeSection"
+                class="page active">
+
+            <div id="courseIntro" class="intro-grid">
+                <div class="welcome-card welcome-course-card">
+                    <h2>
+                        👑 Bem-vinda à aula de hoje,
+                        <span id="studentBanner">
+                        Aluno não identificado
+                        </span>
+                        !
+                    </h2>
+
+                    <p id="welcomeText">
+                        Carregando conteúdo...
+                    </p>
+                </div>
+
+                <div class="auradon-advice">
+                    <h3>✨ Conselhos de Auradon</h3>
+
+                    <div class="advice-content">
+                        <p id="conselhoAuradon"></p>
+
+                        <div class="author">
+                            — Auradon
+                        </div>
+                    </div>
+
+                    <button id="novoConselhoBtn"
+                            type="button"
+                            class="advice-btn">
+                        ✨ Outro conselho
+                    </button>
+                </div>
+            </div>
+
+            <div id="courseComingSoon" class="course-coming-soon hidden">
+                <div class="coming-soon-icon">👑</div>
+
+                <h2>Aula em criação...</h2>
+
+                <p>
+                    Estamos preparando esta aula com muito carinho.
+                </p>
+
+                <p class="coming-soon-highlight">
+                    Volte mais tarde para descobrir as novas aventuras
+                    de aprendizagem em Auradon!
+                </p>
+
+                <button id="comingSoonBackBtn"
+                        type="button"
+                        class="secondary-btn">
+                    👑 Escolher outra matéria
+                </button>
+            </div>
+        </section>
+        <!-- SEÇÕES GERADAS PELO JAVASCRIPT -->
+        <div id="dynamicSections">
+
+        </div>
+    </main>
+
+    <!-- PAINEL LATERAL -->
+    <aside id="resultPanel" class="result-panel">
+
+        <!-- PONTUAÇÃO -->
+        <div class="score-card">
+            <h2>
+                🏆 Pontuação
+            </h2>
+
+            <div id="scoreValue"
+                 class="score-number">
+                0
+            </div>
+
+            <p id="scorePercent">
+                0%
+            </p>
+        </div>
+
+        <!-- CASA -->
+        <div class="medal-card">
+            <h2>
+                Personagem Escolhida
+            </h2>
+
+            <div id="characterIcon"
+                 class="medal-icon">
+                👑
+            </div>
+
+            <div id="characterName">
+                Não selecionada
+            </div>
+        </div>
+
+        <!-- ESTATÍSTICAS -->
+        <div class="medal-card">
+            <h2>
+                Desempenho
+            </h2>
+
+            <div id="easyStats">
+                Fácil: 0/0
+            </div>
+
+            <div id="mediumStats">
+                Médio: 0/0
+            </div>
+
+            <div id="hardStats">
+                Difícil: 0/0
+            </div>
+        </div>
+
+        <!-- MEDALHA -->
+        <div class="medal-card">
+            <h2>
+                Medalha
+            </h2>
+
+            <div id="medalIcon"
+                 class="medal-icon">
+                👑
+            </div>
+
+            <div id="medalText">
+                Iniciante
+            </div>
+        </div>
+
+        <!-- CONQUISTAS -->
+        <div class="medal-card">
+            <h2>
+                👑 Conquistas
+            </h2>
+
+            <div id="achievementsPanel">
+                <div class="achievement-item">
+                    🔒 Nenhuma conquista ainda
+                </div>
+            </div>
+        </div>
+
+        <!-- ESTATÍSTICAS GERAIS -->
+        <div class="medal-card">
+            <h2>
+                📚 Jornada
+            </h2>
+
+            <div>
+                Questões respondidas:
+                <strong id="answeredQuestionsCount">
+                    0
+                </strong>
+            </div>
+
+            <div>
+                Acertos:
+                <strong id="correctAnswersCount">
+                    0
+                </strong>
+            </div>
+
+            <div>
+                Taxa de acerto:
+                <strong id="accuracyPercent">
+                    0%
+                </strong>
+            </div>
+        </div>
+
+        <!-- BOTÃO LIMPAR -->
+        <div class="action-card">
+            <div class="action-icon"> ✨</div>
+            <h2> Reiniciar Progresso </h2>
+            <p> Apaga apenas a matéria atual </p>
+            <button class="clear-save-btn" onclick="clearProgress()"> Reiniciar</button>
+        </div>
+    </aside>
+
+    <!-- MODAL FINAL -->
+    <div id="finalModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>
+                🏆 Resultado Final
+            </h2>
+
+            <div id="finalScore">
+            </div>
+
+            <div id="finalMedal">
+            </div>
+
+            <div id="finalMessage">
+            </div>
+
+            <div class="final-actions">
+                <button onclick="generateCertificate()">
+                    📜 Baixar Certificado
+                </button>
+
+                <button onclick="backToWelcome()">
+                    📚 Escolher Outra Matéria
+                </button>
+
+                <button onclick="restartQuiz()">
+                    🔄 Refazer Desafio
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- MOTOR DA APLICAÇÃO -->
+<script src="script.js"></script>
+
+</body>
+
+</html>
