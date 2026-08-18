@@ -18,6 +18,12 @@ let correctAnswers = 0;
 let studentName = "";
 let selectedCharacter = null;
 
+let ultimoConselho = {
+    personagem: null,
+    materia: null,
+    indice: -1
+};
+
 const characters = {
     mal: {
         icon: "💜",
@@ -61,39 +67,6 @@ const subjects = {
     historia: {name: "🏺 História", file: "data/historia.js", available: false},
     geografia: {name: "🌎 Geografia", file: "data/geografia.js", available: false},
     ingles: {name: "🇬🇧 Inglês", file: "data/ingles.js", available: false}
-};
-
-const conselhosAuradon = {
-    portugues: [
-        "As palavras podem abrir caminhos para novas ideias. Use-as com sabedoria.",
-        "Ler é uma das maneiras mais poderosas de expandir a mente.",
-        "Quem compreende os textos encontra tesouros escondidos."
-    ],
-    matematica: [
-        "Os números podem parecer misteriosos, mas sempre seguem uma lógica.",
-        "Até os cálculos mais difíceis são vencidos passo a passo.",
-        "A paciência é uma grande aliada dos jovens aprendizes."
-    ],
-    ciencias: [
-        "A curiosidade é a centelha que dá início às maiores descobertas.",
-        "Observar o mundo é o primeiro passo para compreendê-lo.",
-        "A magia da ciência está nas perguntas que fazemos."
-    ],
-    historia: [
-        "Conhecer o passado ajuda a compreender o presente.",
-        "Grandes lições podem ser encontradas nas histórias de quem veio antes de nós.",
-        "A memória é uma forma poderosa de aprendizado."
-    ],
-    geografia: [
-        "O mundo é vasto e cheio de maravilhas para descobrir.",
-        "Compreender os lugares é compreender as pessoas.",
-        "Cada mapa conta uma história."
-    ],
-    ingles: [
-        "Aprender uma nova língua é abrir mais uma porta para o conhecimento.",
-        "As palavras têm o poder de unir pessoas de diferentes lugares.",
-        "A prática transforma dúvidas em confiança."
-    ]
 };
 
 const achievements = {
@@ -176,6 +149,25 @@ function initializeWelcomeScreen() {
         showReturningHome();
     }
 
+    const novoConselhoBtn =
+        document.getElementById("novoConselhoBtn");
+
+    if (novoConselhoBtn) {
+        novoConselhoBtn.addEventListener("click", () => {
+
+            ultimoConselho = obterConselhoAuradon(
+                selectedCharacterKey,
+                selectedSubject
+            );
+
+            document.getElementById("conselhoAuradon").textContent =
+                ultimoConselho.texto;
+
+            document.querySelector(".auradon-advice .author").textContent =
+                `— ${ultimoConselho.autor}`;
+        });
+    }
+
     const finalModal = document.getElementById("finalModal");
 
     if (finalModal) {
@@ -251,8 +243,16 @@ function showMainContent() {
         .getElementById("mainContent")
         .classList.remove("hidden");
 
+    ultimoConselho = obterConselhoAuradon(
+        selectedCharacterKey,
+        selectedSubject
+    );
+
     document.getElementById("conselhoAuradon").textContent =
-        obterConselhoAuradon(selectedSubject);
+        ultimoConselho.texto;
+
+    document.querySelector(".auradon-advice .author").textContent =
+        `— ${ultimoConselho.autor}`;
 }
 
 function backToWelcome() {
@@ -1657,17 +1657,37 @@ function hexToRgb(hex) {
 /* ==========================================
    CONSELHOS
 ========================================== */
-function obterConselhoAuradon(materia) {
-    const lista = conselhosAuradon[materia];
+function obterConselhoAuradon(personagem, materia) {
+    const lista = conselhosAuradon?.[personagem]?.[materia];
+
     if (!lista || lista.length === 0) {
-        return "Bibbidi-bobbidi-basta de distrações! Sei que os livros parecem uma montanha intransponível hoje, mas lembre-se: a verdadeira sabedoria não surge num passe de mágica, ela é construída página por página.";
+        return {
+            texto: "Bibbidi-bobbidi-basta de distrações! Sei que os livros parecem uma montanha intransponível hoje, mas lembre-se: a verdadeira sabedoria não surge num passe de mágica, ela é construída página por página.",
+            author: "Fada Madrinha"
+        };
     }
-    const indice = Math.floor(Math.random() * lista.length);
+
+    let indice;
+
+    do {
+        indice = Math.floor(Math.random() * lista.length);
+    } while (
+        lista.length > 1 &&
+        ultimoConselho.personagem === personagem &&
+        ultimoConselho.materia === materia &&
+        indice === ultimoConselho.indice
+        );
+
+    ultimoConselho = {
+        personagem,
+        materia,
+        indice
+    };
+
     return lista[indice];
 }
 
 function checkAchievements() {
-
     const raw = localStorage.getItem(STORAGE_KEY);
 
     if (!raw) {
