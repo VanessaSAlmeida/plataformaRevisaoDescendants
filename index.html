@@ -40,10 +40,6 @@
                     👑
                 </div>
 
-                <h3 id="returningStudentName">
-                    Aluno
-                </h3>
-
                 <p id="returningCharacterName">
                     Personagem
                 </p>
@@ -71,9 +67,9 @@
                 <div class="info-card">
 
             <span>
-                🏆 Melhor desempenho
+                ⭐ Desempenho
             </span>
-                    <strong id="bestSubjectLabel">
+                    <strong id="lastSubjectPerformance">
                         -
                     </strong>
                 </div>
@@ -295,7 +291,7 @@
         <!-- CASA -->
         <div class="medal-card">
             <h2>
-                Personagem Escolhida
+                Guardiã Escolhida
             </h2>
 
             <div id="characterIcon"
@@ -314,7 +310,14 @@
                 Desempenho
             </h2>
 
-            <div id="easyStats">
+            <div>
+                Questões respondidas:
+                <strong id="answeredQuestionsCount">
+                    0
+                </strong>
+            </div>
+
+            <div id="easyStats" style="margin-top: 0.7em">
                 Fácil: 0/0
             </div>
 
@@ -324,6 +327,20 @@
 
             <div id="hardStats">
                 Difícil: 0/0
+            </div>
+
+            <div style="margin-top: 0.7em">
+                Acertos:
+                <strong id="correctAnswersCount">
+                    0
+                </strong>
+            </div>
+
+            <div>
+                Taxa de acerto:
+                <strong id="accuracyPercent">
+                    0%
+                </strong>
             </div>
         </div>
 
@@ -344,43 +361,23 @@
         </div>
 
         <!-- CONQUISTAS -->
-        <div class="medal-card">
-            <h2>
-                👑 Conquistas
-            </h2>
+        <div class="medal-card achievements-card">
+            <div class="achievements-header">
+                <div>
+                    <h2>Conquistas</h2>
+                    <p id="achievementsSummary">
+                        Comece sua aventura em Auradon!
+                    </p>
+                </div>
 
-            <div id="achievementsPanel">
-                <div class="achievement-item">
-                    🔒 Nenhuma conquista ainda
+                <div id="achievementsCount"
+                     class="achievements-count">
+                    0/5
                 </div>
             </div>
-        </div>
 
-        <!-- ESTATÍSTICAS GERAIS -->
-        <div class="medal-card">
-            <h2>
-                📚 Jornada
-            </h2>
-
-            <div>
-                Questões respondidas:
-                <strong id="answeredQuestionsCount">
-                    0
-                </strong>
-            </div>
-
-            <div>
-                Acertos:
-                <strong id="correctAnswersCount">
-                    0
-                </strong>
-            </div>
-
-            <div>
-                Taxa de acerto:
-                <strong id="accuracyPercent">
-                    0%
-                </strong>
+            <div id="achievementsPanel"
+                 class="achievements-panel">
             </div>
         </div>
 
@@ -396,6 +393,14 @@
     <!-- MODAL FINAL -->
     <div id="finalModal" class="modal hidden">
         <div class="modal-content">
+            <button
+                    type="button"
+                    class="modal-close"
+                    onclick="closeFinalModal()"
+                    aria-label="Fechar resultado">
+                ×
+            </button>
+
             <h2>
                 🏆 Resultado Final
             </h2>

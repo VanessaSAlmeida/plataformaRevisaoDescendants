@@ -8,6 +8,8 @@ let returningStudent = false;
 let selectedCharacterKey = null;
 let selectedSubject = null;
 let savedProgressPercentage = 0;
+let savedPerformance = "-";
+let unlockedAchievements = {};
 
 let totalQuestions = 0;
 let answeredQuestions = 0;
@@ -94,6 +96,43 @@ const conselhosAuradon = {
     ]
 };
 
+const achievements = {
+    primeiraAventura: {
+        id: "primeira-aventura",
+        icon: "🌟",
+        title: "Primeira Aventura",
+        description: "Complete sua primeira matéria."
+    },
+
+    mestreDasPalavras: {
+        id: "mestre-das-palavras",
+        icon: "📖",
+        title: "Mestre das Palavras",
+        description: "Complete Português."
+    },
+
+    mestreDosNumeros: {
+        id: "mestre-dos-numeros",
+        icon: "🔢",
+        title: "Mestre dos Números",
+        description: "Complete Matemática."
+    },
+
+    perfeccionista: {
+        id: "perfeccionista",
+        icon: "💯",
+        title: "Perfeccionista",
+        description: "Complete uma matéria com 100% de acertos."
+    },
+
+    conquistadoraDeAuradon: {
+        id: "conquistadora-auradon",
+        icon: "👑",
+        title: "Conquistadora de Auradon",
+        description: "Complete todas as matérias disponíveis."
+    }
+};
+
 function getStorageKey() {
     return "auradon-" + studentName
         .trim()
@@ -136,6 +175,18 @@ function initializeWelcomeScreen() {
     if (detectReturningStudent()) {
         showReturningHome();
     }
+
+    const finalModal = document.getElementById("finalModal");
+
+    if (finalModal) {
+        finalModal.addEventListener("click", function(event) {
+
+            if (event.target === finalModal) {
+                closeFinalModal();
+            }
+
+        });
+    }
 }
 
 function detectReturningStudent() {
@@ -172,13 +223,10 @@ function showReturningStudentPanel() {
         .classList.remove("hidden");
 
     document
-        .getElementById("returningStudentName").textContent = studentName;
-
-    document
         .getElementById("returningCharacterIcon").textContent = selectedCharacter?.icon || "🏰";
 
     document
-        .getElementById("returningCharacterName").textContent = selectedCharacter?.name || "";
+        .getElementById("returningCharacterName").textContent = "Guardiã escolhida: " + selectedCharacter?.name || "";
 
     document
         .getElementById("lastSubjectLabel").textContent = subjects[selectedSubject]?.name || "Nenhuma";
@@ -188,6 +236,8 @@ function showReturningStudentPanel() {
 
     document
         .getElementById("returningStudentSalute").textContent = "👋 Bem-vinda de volta, " + studentName + "!";
+
+    document.getElementById("lastSubjectPerformance").textContent = savedPerformance;
 
     buildSubjectSelector("returningSubjectGrid");
 }
@@ -644,8 +694,8 @@ function answerQuestion(button, topicIndex, questionIndex, answerIndex, restorin
 
     if (!restoring) {
         updateDashboard();
-        checkCompletion();
         saveProgress();
+        checkCompletion();
     }
 }
 
@@ -700,6 +750,7 @@ ${difficultyStats.hard.correct}
 /
 ${difficultyStats.hard.total}`;
 
+    updateAchievementsPanel();
 }
 
 /* ==========================================
@@ -711,22 +762,22 @@ function updateMedal(score) {
 
     if (score >= 95) {
 
-        icon = "⚡";
+        icon = "🥇";
         title = "Lenda de Auradon";
 
     } else if (score >= 80) {
 
-        icon = "🥇";
+        icon = "🥈";
         title = "Mestre de Auradon";
 
     } else if (score >= 60) {
 
-        icon = "🥈";
+        icon = "🥉";
         title = "Guardião do Conhecimento";
 
     } else if (score >= 40) {
 
-        icon = "🥉";
+        icon = "⭐";
         title = "Explorador de Auradon";
 
     }
@@ -746,10 +797,15 @@ function checkCompletion() {
     if (answeredQuestions < totalQuestions) {
         return;
     }
-    showFinalModal();
+
+    const newAchievements = checkAchievements();
+
+    updateAchievementsPanel();
+
+    showFinalModal(newAchievements);
 }
 
-function showFinalModal() {
+function showFinalModal(newAchievements = []) {
     const modal = document
         .getElementById("finalModal");
 
@@ -805,14 +861,14 @@ function getFinalMessage(score) {
 
     if (score >= 80) {
         return `
-        ⭐ Excelente desempenho!
+        🎖️ Excelente desempenho!
         Seu legado em Auradon está muito orgulhoso.
         `;
     }
 
     if (score >= 60) {
         return `
-        📚 Bom trabalho.
+        ⭐ Bom trabalho.
         Continue praticando para
         alcançar a excelência.
         `;
@@ -899,6 +955,7 @@ function saveProgress() {
             }
         }, answers, progressPercentage: calculateProgressPercentage()
     };
+    saveData.achievements = unlockedAchievements;
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(saveData));
 
@@ -969,6 +1026,12 @@ function loadProgress() {
         }
 
         savedProgressPercentage = subjectData.progressPercentage || 0;
+
+        if (correctAnswers && answeredQuestions > 0) {
+            savedPerformance = Math.round(
+                (correctAnswers / answeredQuestions) * 100
+            ) + "%";
+        }
     }
 
     /* ==========================
@@ -1197,48 +1260,370 @@ function buildCharacterSelector() {
    CERTIFICADO
 ========================================== */
 async function generateCertificate() {
-    const {jsPDF} = window.jspdf;
-    const pdf = new jsPDF("landscape", "mm", "a4");
-    const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-    const medal = getCurrentMedal();
-    const today = new Date().toLocaleDateString("pt-BR");
-    const parchmentImg = await loadImage("assets/parchment.png");
-    const crestImg = await loadImage("assets/hogwarts-crest.png");
-    pdf.addImage(imageToDataURL(parchmentImg), "JPEG", 0, 0, 297, 210);
-    pdf.addImage(imageToDataURL(crestImg), "PNG", 120, 15, 55, 55);
-    pdf.setTextColor(60, 40, 10);
-    pdf.setFont("times", "bold");
-    pdf.setFontSize(26);
-    pdf.text("ESCOLA DE MAGIA E BRUXARIA DE HOGWARTS", 148, 80, {align: "center"});
-    pdf.setFontSize(20);
-    pdf.text("CERTIFICADO DE CONCLUSÃO", 148, 95, {align: "center"});
-    pdf.setFont("times", "normal");
-    pdf.setFontSize(14);
-    pdf.text("Certificamos que", 148, 115, {align: "center"});
-    pdf.setFont("times", "bold");
-    pdf.setFontSize(30);
-    pdf.text(studentName, 148, 130, {align: "center"});
-    pdf.setFont("times", "normal");
-    pdf.setFontSize(14);
-    pdf.text("concluiu com sucesso os estudos de Matemática Mágica", 148, 145, {align: "center"});
-    pdf.text("do 5º Ano do Ensino Fundamental", 148, 155, {align: "center"});
-    pdf.setFontSize(13);
-    pdf.text(`Personagem: ${selectedCharacter.name}`, 70, 175);
-    pdf.text(`Desempenho: ${percentage}%`, 70, 185);
-    /* Selo */
-    pdf.setFillColor(212, 175, 55);
-    pdf.circle(235, 170, 22, "F");
-    pdf.setTextColor(80, 40, 10);
-    pdf.setFontSize(11);
-    pdf.text("ORDEM", 235, 165, {align: "center"});
-    pdf.text("DE MERLIN", 235, 172, {align: "center"});
-    pdf.text(medal, 235, 180, {align: "center"});
-    pdf.line(180, 185, 270, 185);
-    pdf.setFontSize(12);
-    pdf.text("Profª Minerva McGonagall", 225, 192, {align: "center"});
-    pdf.setFontSize(10);
-    pdf.text(`Emitido em ${today}`, 148, 203, {align: "center"});
-    pdf.save(`Certificado-${studentName}.pdf`);
+    try {
+
+        if (!window.jspdf) {
+            throw new Error("jsPDF não foi carregado.");
+        }
+
+        const { jsPDF } = window.jspdf;
+
+        const pdf = new jsPDF(
+            "landscape",
+            "mm",
+            "a4"
+        );
+
+        const pageWidth = 297;
+        const pageHeight = 210;
+
+        // ==========================================
+        // DADOS
+        // ==========================================
+        const percentage = totalQuestions > 0
+            ? Math.round(
+                (correctAnswers / totalQuestions) * 100
+            )
+            : 0;
+
+        const medal = getCurrentMedal();
+
+        const subjectName =
+            subjects[selectedSubject]?.name
+                ?.replace(/^[^\s]+\s/, "")
+            || "Matéria";
+
+        const characterName =
+            selectedCharacter?.name
+            || "Auradon";
+
+        const characterIcon =
+            selectedCharacter?.icon
+            || "✨";
+
+        const characterColor =
+            selectedCharacter?.color
+            || "#6C3FA3";
+
+        const today =
+            new Date().toLocaleDateString("pt-BR");
+
+        // ==========================================
+        // FUNDO
+        // ==========================================
+        pdf.setFillColor(13, 18, 32);
+        pdf.rect(
+            0,
+            0,
+            pageWidth,
+            pageHeight,
+            "F"
+        );
+
+        // ==========================================
+        // MOLDURA EXTERNA
+        // ==========================================
+        pdf.setDrawColor(216, 180, 90);
+        pdf.setLineWidth(1.5);
+        pdf.rect(
+            8,
+            8,
+            pageWidth - 16,
+            pageHeight - 16
+        );
+        pdf.setLineWidth(.4);
+        pdf.rect(
+            12,
+            12,
+            pageWidth - 24,
+            pageHeight - 24
+        );
+
+        // ==========================================
+        // DETALHES DECORATIVOS
+        // ==========================================
+        pdf.setFillColor(216, 180, 90);
+        pdf.circle(18, 18, 2, "F");
+        pdf.circle(pageWidth - 18, 18, 2, "F");
+        pdf.circle(18, pageHeight - 18, 2, "F");
+        pdf.circle(
+            pageWidth - 18,
+            pageHeight - 18,
+            2,
+            "F"
+        );
+
+        // ==========================================
+        // BRASÃO
+        // ==========================================
+        const crestImg =
+            await loadImage("assets/auradon-crest.png");
+        pdf.addImage(
+            imageToDataURL(crestImg),
+            "PNG",
+            128,
+            16,
+            41,
+            41
+        );
+
+        // ==========================================
+        // TÍTULO
+        // ==========================================
+        pdf.setTextColor(216, 180, 90);
+        pdf.setFont(
+            "times",
+            "bold"
+        );
+        pdf.setFontSize(25);
+        pdf.text(
+            "AURADON ACADEMY",
+            pageWidth / 2,
+            68,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // SUBTÍTULO
+        // ==========================================
+        pdf.setTextColor(244, 232, 208);
+        pdf.setFontSize(17);
+        pdf.text(
+            "CERTIFICADO DE CONCLUSÃO",
+            pageWidth / 2,
+            79,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // TEXTO
+        // ==========================================
+        pdf.setFont(
+            "times",
+            "normal"
+        );
+        pdf.setFontSize(12);
+        pdf.text(
+            "Este certificado é concedido a",
+            pageWidth / 2,
+            94,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // NOME DA CRIANÇA
+        // ==========================================
+        pdf.setTextColor(247, 227, 163);
+        pdf.setFont(
+            "times",
+            "bold"
+        );
+        pdf.setFontSize(27);
+        pdf.text(
+            studentName,
+            pageWidth / 2,
+            108,
+            {
+                align: "center"
+            }
+        );
+
+        // Linha abaixo do nome
+        pdf.setDrawColor(216, 180, 90);
+        pdf.setLineWidth(.5);
+        pdf.line(
+            80,
+            112,
+            217,
+            112
+        );
+
+        // ==========================================
+        // MATÉRIA
+        // ==========================================
+        pdf.setTextColor(244, 232, 208);
+        pdf.setFont(
+            "times",
+            "normal"
+        );
+        pdf.setFontSize(13);
+        pdf.text(
+            "por concluir com sucesso sua jornada de aprendizagem em",
+            pageWidth / 2,
+            124,
+            {
+                align: "center"
+            }
+        );
+        pdf.setTextColor(216, 180, 90);
+        pdf.setFont(
+            "times",
+            "bold"
+        );
+        pdf.setFontSize(20);
+        pdf.text(
+            subjectName,
+            pageWidth / 2,
+            136,
+            {
+                align: "center"
+            }
+        );
+        pdf.setTextColor(244, 232, 208);
+        pdf.setFont(
+            "times",
+            "normal"
+        );
+        pdf.setFontSize(11);
+        pdf.text(
+            "5º Ano do Ensino Fundamental",
+            pageWidth / 2,
+            146,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // PERSONAGEM
+        // ==========================================
+        pdf.setTextColor(...hexToRgb(characterColor));
+        pdf.setFont(
+            "times",
+            "bold"
+        );
+        pdf.setFontSize(13);
+        pdf.text(
+            `Guardiã: ${characterName}`,
+            pageWidth / 2,
+            158,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // RESULTADO
+        // ==========================================
+        pdf.setTextColor(244, 232, 208);
+        pdf.setFont(
+            "times",
+            "normal"
+        );
+        pdf.setFontSize(11);
+        pdf.text(
+            `Desempenho: ${percentage}% de acertos`,
+            75,
+            177,
+            {
+                align: "center"
+            }
+        );
+        pdf.text(
+            `${correctAnswers} de ${totalQuestions} questões`,
+            75,
+            184,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // SELO
+        // ==========================================
+        pdf.setFillColor(216, 180, 90);
+        pdf.circle(
+            222,
+            177,
+            19,
+            "F"
+        );
+        pdf.setTextColor(20, 24, 38);
+        pdf.setFont(
+            "times",
+            "bold"
+        );
+        pdf.setFontSize(9);
+        pdf.text(
+            "CONQUISTA",
+            222,
+            173,
+            {
+                align: "center"
+            }
+        );
+        pdf.setFontSize(8);
+        pdf.text(
+            medal,
+            222,
+            180,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // DATA
+        // ==========================================
+        pdf.setTextColor(244, 232, 208);
+        pdf.setFont(
+            "times",
+            "normal"
+        );
+        pdf.setFontSize(9);
+        pdf.text(
+            `Auradon Academy, ${today}`,
+            pageWidth / 2,
+            195,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // RODAPÉ
+        // ==========================================
+        pdf.setTextColor(216, 180, 90);
+        pdf.setFont(
+            "times",
+            "italic"
+        );
+        pdf.setFontSize(9);
+        pdf.text(
+            "A bondade é a nossa maior virtude.",
+            pageWidth / 2,
+            201,
+            {
+                align: "center"
+            }
+        );
+
+        // ==========================================
+        // DOWNLOAD
+        // ==========================================
+        const fileName =
+            `Certificado_${subjectName}_${studentName}`
+                .replace(/\s+/g, "_")
+                .replace(/[^\wÀ-ÿ_-]/g, "");
+        pdf.save(
+            `${fileName}.pdf`
+        );
+    } catch (error) {
+        console.error(
+            "Erro ao gerar certificado:",
+            error
+        );
+        alert(
+            "Não foi possível gerar o certificado. " +
+            "Verifique o console para mais detalhes."
+        );
+    }
 }
 
 function loadImage(url) {
@@ -1259,14 +1644,292 @@ function imageToDataURL(img) {
     return canvas.toDataURL("image/png");
 }
 
+function hexToRgb(hex) {
+    const value = hex.replace("#", "");
+
+    return [
+        parseInt(value.substring(0, 2), 16),
+        parseInt(value.substring(2, 4), 16),
+        parseInt(value.substring(4, 6), 16)
+    ];
+}
+
 /* ==========================================
-   CONSELHOS DUMBLEDORE
+   CONSELHOS
 ========================================== */
 function obterConselhoAuradon(materia) {
     const lista = conselhosAuradon[materia];
     if (!lista || lista.length === 0) {
-        return "O conhecimento sempre será uma das maiores formas de magia.";
+        return "Bibbidi-bobbidi-basta de distrações! Sei que os livros parecem uma montanha intransponível hoje, mas lembre-se: a verdadeira sabedoria não surge num passe de mágica, ela é construída página por página.";
     }
     const indice = Math.floor(Math.random() * lista.length);
     return lista[indice];
+}
+
+function checkAchievements() {
+
+    const raw = localStorage.getItem(STORAGE_KEY);
+
+    if (!raw) {
+        return [];
+    }
+
+    const saveData = JSON.parse(raw);
+
+    saveData.subjectProgress = saveData.subjectProgress || {};
+
+    // Conquistas já desbloqueadas
+    const unlocked = saveData.achievements || {};
+
+    // Novas conquistas obtidas nesta verificação
+    const newAchievements = [];
+
+    // ==========================================
+    // MATÉRIAS DISPONÍVEIS
+    // ==========================================
+
+    const availableSubjects = Object.keys(subjects)
+        .filter(subject => subjects[subject].available);
+
+    // ==========================================
+    // MATÉRIAS CONCLUÍDAS
+    // ==========================================
+
+    const completedSubjects = availableSubjects.filter(subject => {
+
+        const progress = saveData.subjectProgress[subject];
+
+        return progress &&
+            progress.progressPercentage >= 100;
+    });
+
+    // ==========================================
+    // PRIMEIRA AVENTURA
+    // ==========================================
+
+    if (
+        completedSubjects.length >= 1 &&
+        !unlocked[achievements.primeiraAventura.id]
+    ) {
+
+        unlocked[achievements.primeiraAventura.id] = true;
+
+        newAchievements.push(
+            achievements.primeiraAventura
+        );
+    }
+
+    // ==========================================
+    // MESTRE DAS PALAVRAS
+    // ==========================================
+
+    if (
+        subjects.portugues &&
+        subjects.portugues.available &&
+        completedSubjects.includes("portugues") &&
+        !unlocked[achievements.mestreDasPalavras.id]
+    ) {
+
+        unlocked[achievements.mestreDasPalavras.id] = true;
+
+        newAchievements.push(
+            achievements.mestreDasPalavras
+        );
+    }
+
+    // ==========================================
+    // MESTRE DOS NÚMEROS
+    // ==========================================
+
+    if (
+        subjects.matematica &&
+        subjects.matematica.available &&
+        completedSubjects.includes("matematica") &&
+        !unlocked[achievements.mestreDosNumeros.id]
+    ) {
+
+        unlocked[achievements.mestreDosNumeros.id] = true;
+
+        newAchievements.push(
+            achievements.mestreDosNumeros
+        );
+    }
+
+    // ==========================================
+    // PERFECCIONISTA
+    // ==========================================
+
+    const perfectSubject = completedSubjects.some(subject => {
+
+        const progress = saveData.subjectProgress[subject];
+
+        return (
+            progress.correctAnswers === progress.answeredQuestions &&
+            progress.answeredQuestions > 0
+        );
+    });
+
+    if (
+        perfectSubject &&
+        !unlocked[achievements.perfeccionista.id]
+    ) {
+
+        unlocked[achievements.perfeccionista.id] = true;
+
+        newAchievements.push(
+            achievements.perfeccionista
+        );
+    }
+
+    // ==========================================
+    // CONQUISTADORA DE AURADON
+    // ==========================================
+
+    const allSubjectsCompleted =
+        availableSubjects.length > 0 &&
+        availableSubjects.every(subject => {
+
+            const progress = saveData.subjectProgress[subject];
+
+            return (
+                progress &&
+                progress.progressPercentage >= 100
+            );
+        });
+
+    if (
+        allSubjectsCompleted &&
+        !unlocked[achievements.conquistadoraDeAuradon.id]
+    ) {
+
+        unlocked[achievements.conquistadoraDeAuradon.id] = true;
+
+        newAchievements.push(
+            achievements.conquistadoraDeAuradon
+        );
+    }
+
+    // ==========================================
+    // SALVAR CONQUISTAS
+    // ==========================================
+
+    saveData.achievements = unlocked;
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(saveData)
+    );
+
+    return newAchievements;
+}
+
+function updateAchievementsPanel() {
+
+    const panel = document.getElementById("achievementsPanel");
+
+    if (!panel) {
+        return;
+    }
+
+    const raw = localStorage.getItem(STORAGE_KEY);
+
+    if (!raw) {
+        renderLockedAchievements();
+        return;
+    }
+
+    const saveData = JSON.parse(raw);
+
+    const unlocked = saveData.achievements || {};
+
+    const achievementList = Object.values(achievements);
+
+    const unlockedCount = achievementList.filter(
+        achievement => unlocked[achievement.id]
+    ).length;
+
+    // ==========================================
+    // CONTADOR
+    // ==========================================
+
+    const countElement =
+        document.getElementById("achievementsCount");
+
+    if (countElement) {
+        countElement.textContent =
+            `${unlockedCount}/${achievementList.length}`;
+    }
+
+    // ==========================================
+    // MENSAGEM
+    // ==========================================
+
+    const summary =
+        document.getElementById("achievementsSummary");
+
+    if (summary) {
+
+        if (unlockedCount === 0) {
+            summary.textContent =
+                "Sua primeira conquista está esperando por você!";
+        } else if (unlockedCount === achievementList.length) {
+            summary.textContent =
+                "Você conquistou tudo em Auradon! 👑";
+        } else {
+            summary.textContent =
+                `${unlockedCount} conquista${unlockedCount > 1 ? "s" : ""} desbloqueada${unlockedCount > 1 ? "s" : ""}!`;
+        }
+    }
+
+    // ==========================================
+    // LISTA
+    // ==========================================
+
+    panel.innerHTML = achievementList
+        .map(achievement => {
+
+            const isUnlocked =
+                !!unlocked[achievement.id];
+
+            return `
+                <div class="achievement-item ${isUnlocked ? "unlocked" : "locked"}">
+
+                    <div class="achievement-icon">
+                        ${isUnlocked ? achievement.icon : "🔒"}
+                    </div>
+
+                    <div class="achievement-info">
+
+                        <strong>
+                            ${achievement.title}
+                        </strong>
+
+                        <span>
+                            ${achievement.description}
+                        </span>
+
+                        ${isUnlocked
+                ? `<small>✨ Conquistada!</small>`
+                : `<small>Ainda bloqueada</small>`
+            }
+
+                    </div>
+
+                </div>
+            `;
+        })
+        .join("");
+}
+
+function closeFinalModal() {
+
+    const modal = document.getElementById("finalModal");
+
+    if (modal) {
+        modal.classList.add("hidden");
+    }
+
+    // Garante que o painel esteja atualizado
+    updateDashboard();
+    updateAchievementsPanel();
 }

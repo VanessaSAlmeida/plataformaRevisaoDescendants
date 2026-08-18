@@ -1,6 +1,13 @@
-/* =====================================
-   RESET
-===================================== */
+/* =========================================================
+   AURADON ACADEMY
+   Style.css — versão limpa
+   Baseada no layout atual do projeto.
+   Nesta etapa: limpeza estrutural, sem mudanças visuais intencionais.
+========================================================= */
+
+/* =========================================================
+   1. RESET E VARIÁVEIS
+========================================================= */
 
 * {
     margin: 0;
@@ -12,23 +19,6 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    font-family: 'Crimson Text', serif;
-    color: #f3f4f6;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-    background:
-        radial-gradient(circle at 12% 18%, rgba(142, 91, 194, .34), transparent 24%),
-        radial-gradient(circle at 88% 22%, rgba(22, 138, 173, .28), transparent 25%),
-        radial-gradient(circle at 50% 92%, rgba(201, 59, 75, .22), transparent 30%),
-        radial-gradient(circle at 70% 62%, rgba(216, 180, 90, .10), transparent 18%),
-        linear-gradient(135deg, #171333 0%, #0B1527 46%, #170D20 100%);
-}
-
-/* =====================================
-   VARIÁVEIS
-===================================== */
 :root {
     --gold: #D8B45A;
     --gold-light: #F7E3A3;
@@ -48,10 +38,80 @@ body {
     --card-hover: #202842;
 
     --success: #238636;
-    --danger: #da3633;
+    --danger: #DA3633;
 
     --shadow: 0 8px 25px rgba(0, 0, 0, .35);
 }
+
+/* =========================================================
+   2. FUNDO GLOBAL
+========================================================= */
+
+body {
+    font-family: 'Crimson Text', serif;
+    color: #F3F4F6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+
+    background:
+            radial-gradient(circle at 10% 24%, rgba(142, 91, 194, .42), transparent 27%),
+            radial-gradient(circle at 90% 24%, rgba(22, 138, 173, .34), transparent 28%),
+            radial-gradient(circle at 50% 100%, rgba(201, 59, 75, .14), transparent 32%),
+            linear-gradient(135deg, #1B1538 0%, #0B1428 50%, #0D2433 100%);
+}
+
+/* Campo de estrelas atual */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/*
+ * Céu de Auradon
+ *
+ * A distribuição segue a referência visual:
+ * o maior conjunto de estrelas acompanha o castelo, como se ele estivesse
+ * cercado por pequenos brilhos. No centro e no lado direito há poucas
+ * estrelas, para preservar a hierarquia do título e do brasão.
+ */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    opacity: .86;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221600%22%20height%3D%22800%22%20viewBox%3D%220%200%201600%20800%22%3E%3Cg%20fill%3D%22%23f7e3a3%22%3E%3Cpath%20opacity%3D%220.68%22%20d%3D%22M44%20104%20L45.92%20110.08%20L52%20112%20L45.92%20113.92%20L44%20120%20L42.08%20113.92%20L36%20112%20L42.08%20110.08%20Z%22%2F%3E%3Cpath%20opacity%3D%220.76%22%20d%3D%22M228%2060%20L230.4%2067.6%20L238%2070%20L230.4%2072.4%20L228%2080%20L225.6%2072.4%20L218%2070%20L225.6%2067.6%20Z%22%2F%3E%3Cpath%20opacity%3D%220.7%22%20d%3D%22M327%20115%20L328.68%20120.32%20L334%20122%20L328.68%20123.68%20L327%20129%20L325.32%20123.68%20L320%20122%20L325.32%20120.32%20Z%22%2F%3E%3Cpath%20opacity%3D%220.62%22%20d%3D%22M295%20237%20L296.92%20243.08%20L303%20245%20L296.92%20246.92%20L295%20253%20L293.08%20246.92%20L287%20245%20L293.08%20243.08%20Z%22%2F%3E%3Cpath%20opacity%3D%220.66%22%20d%3D%22M250%20361%20L251.68%20366.32%20L257%20368%20L251.68%20369.68%20L250%20375%20L248.32%20369.68%20L243%20368%20L248.32%20366.32%20Z%22%2F%3E%3Cpath%20opacity%3D%220.62%22%20d%3D%22M347%20421%20L349.16%20427.84%20L356%20430%20L349.16%20432.16%20L347%20439%20L344.84%20432.16%20L338%20430%20L344.84%20427.84%20Z%22%2F%3E%3Cpath%20opacity%3D%220.58%22%20d%3D%22M115%20432%20L116.44%20436.56%20L121%20438%20L116.44%20439.44%20L115%20444%20L113.56%20439.44%20L109%20438%20L113.56%20436.56%20Z%22%2F%3E%3Cpath%20opacity%3D%220.52%22%20d%3D%22M560%2082%20L561.44%2086.56%20L566%2088%20L561.44%2089.44%20L560%2094%20L558.56%2089.44%20L554%2088%20L558.56%2086.56%20Z%22%2F%3E%3Cpath%20opacity%3D%220.5%22%20d%3D%22M930%2060%20L931.44%2064.56%20L936%2066%20L931.44%2067.44%20L930%2072%20L928.56%2067.44%20L924%2066%20L928.56%2064.56%20Z%22%2F%3E%3Cpath%20opacity%3D%220.48%22%20d%3D%22M1215%20115%20L1216.2%20118.8%20L1220%20120%20L1216.2%20121.2%20L1215%20125%20L1213.8%20121.2%20L1210%20120%20L1213.8%20118.8%20Z%22%2F%3E%3Cpath%20opacity%3D%220.45%22%20d%3D%22M1450%20209%20L1451.44%20213.56%20L1456%20215%20L1451.44%20216.44%20L1450%20221%20L1448.56%20216.44%20L1444%20215%20L1448.56%20213.56%20Z%22%2F%3E%3Cpath%20opacity%3D%220.44%22%20d%3D%22M1325%20345%20L1326.2%20348.8%20L1330%20350%20L1326.2%20351.2%20L1325%20355%20L1323.8%20351.2%20L1320%20350%20L1323.8%20348.8%20Z%22%2F%3E%3Cpath%20opacity%3D%220.42%22%20d%3D%22M1510%20513%20L1511.68%20518.32%20L1517%20520%20L1511.68%20521.68%20L1510%20527%20L1508.32%20521.68%20L1503%20520%20L1508.32%20518.32%20Z%22%2F%3E%3Cpath%20opacity%3D%220.4%22%20d%3D%22M1040%20605%20L1041.2%20608.8%20L1045%20610%20L1041.2%20611.2%20L1040%20615%20L1038.8%20611.2%20L1035%20610%20L1038.8%20608.8%20Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23ffffff%22%3E%3Cpath%20opacity%3D%220.58%22%20d%3D%22M82%2049.2%20L82.672%2051.328%20L84.8%2052%20L82.672%2052.672%20L82%2054.8%20L81.328%2052.672%20L79.2%2052%20L81.328%2051.328%20Z%22%2F%3E%3Cpath%20opacity%3D%220.5%22%20d%3D%22M155%20147%20L155.72%20149.28%20L158%20150%20L155.72%20150.72%20L155%20153%20L154.28%20150.72%20L152%20150%20L154.28%20149.28%20Z%22%2F%3E%3Cpath%20opacity%3D%220.48%22%20d%3D%22M205%20202.5%20L205.6%20204.4%20L207.5%20205%20L205.6%20205.6%20L205%20207.5%20L204.4%20205.6%20L202.5%20205%20L204.4%20204.4%20Z%22%2F%3E%3Cpath%20opacity%3D%220.55%22%20d%3D%22M300%2052.6%20L300.576%2054.424%20L302.4%2055%20L300.576%2055.576%20L300%2057.4%20L299.424%2055.576%20L297.6%2055%20L299.424%2054.424%20Z%22%2F%3E%3Cpath%20opacity%3D%220.5%22%20d%3D%22M365%20162.2%20L365.672%20164.328%20L367.8%20165%20L365.672%20165.672%20L365%20167.8%20L364.328%20165.672%20L362.2%20165%20L364.328%20164.328%20Z%22%2F%3E%3Cpath%20opacity%3D%220.44%22%20d%3D%22M380%20302.5%20L380.6%20304.4%20L382.5%20305%20L380.6%20305.6%20L380%20307.5%20L379.4%20305.6%20L377.5%20305%20L379.4%20304.4%20Z%22%2F%3E%3Cpath%20opacity%3D%220.45%22%20d%3D%22M68%20312.6%20L68.576%20314.424%20L70.4%20315%20L68.576%20315.576%20L68%20317.4%20L67.424%20315.576%20L65.6%20315%20L67.424%20314.424%20Z%22%2F%3E%3Cpath%20opacity%3D%220.42%22%20d%3D%22M180%20502.5%20L180.6%20504.4%20L182.5%20505%20L180.6%20505.6%20L180%20507.5%20L179.4%20505.6%20L177.5%20505%20L179.4%20504.4%20Z%22%2F%3E%3Cpath%20opacity%3D%220.42%22%20d%3D%22M315%20512.5%20L315.6%20514.4%20L317.5%20515%20L315.6%20515.6%20L315%20517.5%20L314.4%20515.6%20L312.5%20515%20L314.4%20514.4%20Z%22%2F%3E%3Cpath%20opacity%3D%220.44%22%20d%3D%22M430%20112.7%20L430.552%20114.448%20L432.3%20115%20L430.552%20115.552%20L430%20117.3%20L429.448%20115.552%20L427.7%20115%20L429.448%20114.448%20Z%22%2F%3E%3Cpath%20opacity%3D%220.38%22%20d%3D%22M510%20182.6%20L510.576%20184.424%20L512.4%20185%20L510.576%20185.576%20L510%20187.4%20L509.424%20185.576%20L507.6%20185%20L509.424%20184.424%20Z%22%2F%3E%3Cpath%20opacity%3D%220.36%22%20d%3D%22M620%20117.8%20L620.528%20119.472%20L622.2%20120%20L620.528%20120.528%20L620%20122.2%20L619.472%20120.528%20L617.8%20120%20L619.472%20119.472%20Z%22%2F%3E%3Cpath%20opacity%3D%220.36%22%20d%3D%22M720%2072.7%20L720.552%2074.448%20L722.3%2075%20L720.552%2075.552%20L720%2077.3%20L719.448%2075.552%20L717.7%2075%20L719.448%2074.448%20Z%22%2F%3E%3Cpath%20opacity%3D%220.35%22%20d%3D%22M840%20162.8%20L840.528%20164.472%20L842.2%20165%20L840.528%20165.528%20L840%20167.2%20L839.472%20165.528%20L837.8%20165%20L839.472%20164.472%20Z%22%2F%3E%3Cpath%20opacity%3D%220.38%22%20d%3D%22M1000%20132.6%20L1000.576%20134.424%20L1002.4%20135%20L1000.576%20135.576%20L1000%20137.4%20L999.424%20135.576%20L997.6%20135%20L999.424%20134.424%20Z%22%2F%3E%3Cpath%20opacity%3D%220.36%22%20d%3D%22M1120%20202.7%20L1120.552%20204.448%20L1122.3%20205%20L1120.552%20205.552%20L1120%20207.3%20L1119.448%20205.552%20L1117.7%20205%20L1119.448%20204.448%20Z%22%2F%3E%3Cpath%20opacity%3D%220.36%22%20d%3D%22M1260%2067.6%20L1260.576%2069.424%20L1262.4%2070%20L1260.576%2070.576%20L1260%2072.4%20L1259.424%2070.576%20L1257.6%2070%20L1259.424%2069.424%20Z%22%2F%3E%3Cpath%20opacity%3D%220.34%22%20d%3D%22M1380%20142.7%20L1380.552%20144.448%20L1382.3%20145%20L1380.552%20145.552%20L1380%20147.3%20L1379.448%20145.552%20L1377.7%20145%20L1379.448%20144.448%20Z%22%2F%3E%3Cpath%20opacity%3D%220.38%22%20d%3D%22M1515%20102.6%20L1515.576%20104.424%20L1517.4%20105%20L1515.576%20105.576%20L1515%20107.4%20L1514.424%20105.576%20L1512.6%20105%20L1514.424%20104.424%20Z%22%2F%3E%3Cpath%20opacity%3D%220.36%22%20d%3D%22M1460%20407.6%20L1460.576%20409.424%20L1462.4%20410%20L1460.576%20410.576%20L1460%20412.4%20L1459.424%20410.576%20L1457.6%20410%20L1459.424%20409.424%20Z%22%2F%3E%3Cpath%20opacity%3D%220.35%22%20d%3D%22M1260%20497.7%20L1260.552%20499.448%20L1262.3%20500%20L1260.552%20500.552%20L1260%20502.3%20L1259.448%20500.552%20L1257.7%20500%20L1259.448%20499.448%20Z%22%2F%3E%3Cpath%20opacity%3D%220.34%22%20d%3D%22M1160%20647.5%20L1160.6%20649.4%20L1162.5%20650%20L1160.6%20650.6%20L1160%20652.5%20L1159.4%20650.6%20L1157.5%20650%20L1159.4%20649.4%20Z%22%2F%3E%3Cpath%20opacity%3D%220.32%22%20d%3D%22M760%20587.6%20L760.576%20589.424%20L762.4%20590%20L760.576%20590.576%20L760%20592.4%20L759.424%20590.576%20L757.6%20590%20L759.424%20589.424%20Z%22%2F%3E%3Cpath%20opacity%3D%220.32%22%20d%3D%22M500%20647.5%20L500.6%20649.4%20L502.5%20650%20L500.6%20650.6%20L500%20652.5%20L499.4%20650.6%20L497.5%20650%20L499.4%20649.4%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-size: 70% 73%;
+    background-position: top;
+}
+
+body::after {
+    opacity: .18;
+    background:
+            radial-gradient(circle at 12% 20%, rgba(247,227,163,.20), transparent 12%),
+            radial-gradient(circle at 19% 48%, rgba(247,227,163,.12), transparent 14%),
+            radial-gradient(circle at 83% 24%, rgba(255,255,255,.08), transparent 13%);
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   3. TELA INICIAL
+========================================================= */
 
 #welcomeScreen {
     min-height: 100vh;
@@ -59,38 +119,88 @@ body {
     justify-content: center;
     align-items: center;
     padding: 40px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+            radial-gradient(circle at 15% 25%, rgba(142,91,194,.22), transparent 28%),
+            radial-gradient(circle at 85% 25%, rgba(22,138,173,.18), transparent 28%);
+}
+
+#welcomeScreen::before,
+#welcomeScreen::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+#welcomeScreen::before {
+    left: 0;
+    bottom: 0;
+    width: min(390px, 35vw);
+    height: min(500px, 68vh);
+    background: url("assets/castle.png") left bottom / contain no-repeat;
+    opacity: .11;
+}
+
+#welcomeScreen::after {
+    right: 2%;
+    top: 4%;
+    width: min(250px, 22vw);
+    height: min(270px, 42vh);
+    background: url("assets/auradon-crest.png") center / contain no-repeat;
+    opacity: .10;
 }
 
 .welcome-card {
     width: 100%;
     max-width: 1000px;
-    background: rgba(17, 24, 39, .92);
+    padding: 40px;
+
+    position: relative;
+    z-index: 2;
+
+    background: rgba(17, 24, 39, .88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     border: 2px solid rgba(216, 180, 90, .75);
     border-radius: 24px;
-    padding: 40px;
+
     box-shadow:
-        0 0 30px rgba(216, 180, 90, .12),
-        0 18px 55px rgba(0, 0, 0, .35);
+            0 0 30px rgba(216, 180, 90, .12),
+            0 18px 55px rgba(0, 0, 0, .35);
 }
 
 .welcome-card h1 {
-    color: #D8B45A;
+    color: var(--gold);
     margin-bottom: 10px;
+}
+
+.welcome-card h2,
+.content-card h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    margin-bottom: 12px;
 }
 
 .welcome-card input {
     width: 100%;
     padding: 14px;
+    margin-bottom: 20px;
+
     border-radius: 12px;
     border: 1px solid #374151;
+
     background: #1F2937;
     color: white;
-    margin-bottom: 20px;
 }
 
 .welcome-message {
     margin: 20px 0;
     padding: 16px;
+
     border-radius: 12px;
     background: rgba(216, 180, 90, .1);
     border: 1px solid rgba(216, 180, 90, .3);
@@ -107,15 +217,22 @@ body {
 
 .character-btn,
 .subject-btn {
-    padding: 18px 16px;
     min-height: 68px;
+    padding: 18px 16px;
+
     border: 2px solid transparent;
     border-radius: 16px;
+
     cursor: pointer;
-    font-weight: 700;
     font-family: inherit;
     font-size: 1.05rem;
-    transition: transform .25s, box-shadow .25s, border-color .25s;
+    font-weight: 700;
+
+    transition:
+            transform .25s,
+            box-shadow .25s,
+            border-color .25s;
+
     background: linear-gradient(145deg, #20243A, #151827);
     color: white;
 }
@@ -145,11 +262,32 @@ body {
 .character-btn.selected,
 .subject-btn.selected {
     border-color: var(--gold-light);
+    outline: 3px solid var(--gold);
     box-shadow:
-        0 0 0 3px rgba(216, 180, 90, .18),
-        0 0 22px rgba(216, 180, 90, .35);
+            0 0 0 3px rgba(216, 180, 90, .18),
+            0 0 22px rgba(216, 180, 90, .35);
     transform: translateY(-2px);
 }
+
+.subject-btn.subject-coming-soon {
+    position: relative;
+    opacity: .78;
+    border-color: rgba(216, 180, 90, .12);
+}
+
+.subject-btn.subject-coming-soon::after {
+    content: "Em criação";
+    display: block;
+    margin-top: 4px;
+    color: var(--gold);
+    font-size: .72rem;
+    font-weight: 600;
+    opacity: .9;
+}
+
+/* =========================================================
+   4. BOTÕES
+========================================================= */
 
 #startJourneyBtn,
 #continueJourneyBtn,
@@ -157,147 +295,35 @@ body {
     min-width: 250px;
     margin-top: 20px;
     padding: 18px;
+
     border: none;
     border-radius: 14px;
+
     cursor: pointer;
-    background: #D8B45A;
+
+    background: var(--gold);
     color: #111827;
+
     font-size: 1.1rem;
     font-weight: bold;
 }
 
-.character-btn.selected,
-.subject-btn.selected {
-    outline: 3px solid #D8B45A;
-}
-
-.secondary-btn {
-    min-width: 220px;
-    background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, .06),
-            rgba(216, 180, 90, .10)
-    );
-    color: #F8F5E9;
-    border: 1px solid rgba(216, 180, 90, .4);
-    border-radius: 14px;
-    padding: 14px 28px;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
-}
-
-.secondary-btn:hover {
-    background: rgba(216, 180, 90, .15);
-    border-color: #D8B45A;
-    color: #D8B45A;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(216, 180, 90, .25);
-}
-
-.secondary-btn:active {
-    transform: translateY(0);
-}
-
-/* =====================================
-   HERO
-===================================== */
-.hero {
-    position: relative;
-    overflow: hidden;
-    padding: 38px 20px 28px;
-    text-align: center;
-    border-bottom: 1px solid rgba(216, 180, 90, .14);
-    background:
-        radial-gradient(circle at 18% 30%, rgba(142, 91, 194, .12), transparent 24%),
-        radial-gradient(circle at 82% 30%, rgba(22, 138, 173, .10), transparent 24%);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.castle-icon {
-    font-size: 3.7rem;
-    line-height: 1;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 5px 10px rgba(216, 180, 90, .25));
-}
-
-.hero h1 {
-    font-family: 'Cinzel', serif;
-    color: var(--gold);
-    font-size: clamp(2.2rem, 5vw, 4.1rem);
-    letter-spacing: .02em;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-    text-shadow: 0 3px 18px rgba(216, 180, 90, .14);
-}
-
-.course-tagline {
-    margin: 4px auto 10px;
-    max-width: 850px;
-    color: #F4E8D0;
-    font-size: clamp(1.05rem, 2vw, 1.35rem);
-    font-style: italic;
-}
-
-.hero p#courseSubtitle {
-    color: #C8CBD5;
-    font-size: 1rem;
-    margin-top: 4px;
-}
-
-.hero-actions {
-    margin-top: 18px;
-    display: flex;
-    justify-content: center;
-}
-
-.hero::before,
-.hero::after {
-    content: "";
-    position: absolute;
-    width: 145px;
-    height: 170px;
-    opacity: .46;
-    background-repeat: no-repeat;
-    background-size: contain;
-    filter: drop-shadow(0 0 14px rgba(216, 180, 90, .18));
-    pointer-events: none;
-}
-
-.hero::before {
-    left: 4%;
-    top: 99px;
-    background-image: url(assets/castle.png);
-    transform: scale(2.0);
-}
-
-.hero::after {
-    right: 3%;
-    top: 140px;
-    background-image: url("assets/auradon-crest.png");
-    transform: scale(1.5);
-}
-
 .secondary-btn {
     min-width: 210px;
+    padding: 11px 25px;
+
     background: rgba(17, 20, 38, .78);
     color: var(--gold-light);
+
     border: 1px solid rgba(216, 180, 90, .72);
     border-radius: 12px;
-    padding: 11px 25px;
+
     font-family: inherit;
     font-size: 1rem;
     font-weight: 700;
+
     cursor: pointer;
+
     transition: all .25s ease;
     box-shadow: 0 6px 18px rgba(0, 0, 0, .24);
 }
@@ -312,53 +338,229 @@ body {
     transform: translateY(0);
 }
 
-/* =====================================
-   ESTRELAS E ELEMENTOS DECORATIVOS
-===================================== */
-body::before,
-body::after {
+.clear-save-btn {
+    padding: 14px 28px;
+
+    background: linear-gradient(135deg, #C93B4B, #7a0000);
+    color: white;
+
+    border: none;
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: .3s;
+}
+
+.clear-save-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(174, 0, 1, .35);
+}
+
+.dev-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    background: #24527D;
+    color: white;
+    font-weight: bold;
+}
+
+/* =========================================================
+   5. HERO / CABEÇALHO DA MATÉRIA
+========================================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 378px;
+    padding: 34px 20px 28px;
+
+    text-align: center;
+
+    border-bottom: 0;
+
+    /* O hero usa o mesmo fundo global do body.
+       Isso elimina a faixa/caixa visual no final do cabeçalho. */
+    background: transparent;
+}
+
+.hero::before {
     content: "";
-    position: fixed;
-    inset: 0;
+
+    position: absolute;
+    left: -12px;
+    bottom: 0;
+
+    width: min(390px, 32vw);
+    height: 365px;
+
+    opacity: .25;
+
+    background:
+            url("assets/castle.png") left bottom / contain no-repeat;
+
+    filter:
+            saturate(.68)
+            brightness(.78)
+            drop-shadow(0 0 24px rgba(111, 72, 157, .16));
+
+    /* O castelo desaparece suavemente no céu pela parte de cima.
+       A base permanece inteira e encostada naturalmente ao rodapé. */
+    -webkit-mask-image:
+            linear-gradient(
+                    to top,
+                    #000 0%,
+                    #000 48%,
+                    rgba(0,0,0,.88) 66%,
+                    rgba(0,0,0,.45) 82%,
+                    transparent 100%
+            );
+
+    mask-image:
+            linear-gradient(
+                    to top,
+                    #000 0%,
+                    #000 48%,
+                    rgba(0,0,0,.88) 66%,
+                    rgba(0,0,0,.45) 82%,
+                    transparent 100%
+            );
+
     pointer-events: none;
     z-index: 0;
 }
 
-body::before {
-    opacity: .72;
-    background-image:
-        radial-gradient(circle at 8% 12%, rgba(255,255,255,.95) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 18% 72%, rgba(247,227,163,.85) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 29% 31%, rgba(255,255,255,.78) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 41% 82%, rgba(255,255,255,.72) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 53% 18%, rgba(247,227,163,.88) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 64% 68%, rgba(255,255,255,.76) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 76% 12%, rgba(247,227,163,.86) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 88% 58%, rgba(255,255,255,.88) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 95% 86%, rgba(247,227,163,.78) 0 1px, transparent 1.8px);
-}
-
-body::after {
-    opacity: .34;
-    background-image:
-        radial-gradient(circle at 5% 46%, rgba(142,91,194,.95) 0 2px, transparent 3px),
-        radial-gradient(circle at 24% 14%, rgba(216,180,90,.88) 0 1.5px, transparent 2.7px),
-        radial-gradient(circle at 36% 60%, rgba(22,138,173,.92) 0 2px, transparent 3px),
-        radial-gradient(circle at 57% 42%, rgba(216,180,90,.78) 0 1.5px, transparent 2.7px),
-        radial-gradient(circle at 72% 86%, rgba(201,59,75,.82) 0 2px, transparent 3px),
-        radial-gradient(circle at 84% 35%, rgba(142,91,194,.88) 0 1.5px, transparent 2.8px);
-}
-
-/* O conteúdo fica acima do campo estrelado. */
-body > * {
+.hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
+    max-width: 1100px;
+    margin: auto;
 }
 
-/* =====================================
-   PROGRESSO
-===================================== */
+/* Pequenas estrelas decorativas exclusivas do cabeçalho da matéria. */
+.hero-content::before,
+.hero-content::after {
+    content: "✦";
+    position: absolute;
+    pointer-events: none;
+
+    color: rgba(247, 227, 163, .48);
+    font-family: Georgia, serif;
+    line-height: 1;
+
+    text-shadow:
+            0 0 8px rgba(247, 227, 163, .18);
+}
+
+.hero-content::before {
+    left: -38px;
+    top: 31%;
+    font-size: 13px;
+}
+
+.hero-content::after {
+    right: 18%;
+    top: 8%;
+    font-size: 9px;
+    color: rgba(255, 255, 255, .42);
+}
+
+.castle-icon {
+    font-size: 3.25rem;
+    line-height: 1;
+    margin-bottom: 8px;
+
+    filter: drop-shadow(0 4px 12px rgba(216,180,90,.28));
+}
+
+.hero h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+
+    font-size: clamp(2rem, 4vw, 3.55rem);
+    letter-spacing: .015em;
+
+    margin-bottom: 6px;
+
+    text-transform: uppercase;
+    text-shadow: 0 3px 18px rgba(216,180,90,.14);
+}
+
+.course-tagline {
+    max-width: 760px;
+    margin: 6px auto 9px;
+
+    color: #F4E8D0;
+
+    font-size: clamp(1rem, 1.7vw, 1.28rem);
+    font-style: italic;
+}
+
+.hero p#courseSubtitle {
+    color: #C8CBD5;
+    font-size: .98rem;
+    margin-top: 4px;
+}
+
+.hero-actions {
+    margin-top: 18px;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* Transição suave entre o hero e a área de progresso */
+.hero {
+    isolation: isolate;
+}
+
+.hero-content,
+.hero-actions {
+    position: relative;
+    z-index: 2;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+    right: 1.5%;
+    top: 52px;
+
+    width: min(230px, 18vw);
+    height: 250px;
+
+    opacity: .72;
+
+    background: url("assets/auradon-crest.png") center / contain no-repeat;
+
+    filter: drop-shadow(0 0 18px rgba(216,180,90,.16));
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   6. PROGRESSO
+========================================================= */
+
 .progress-section {
+    position: relative;
+    z-index: 2;
+
     width: min(1200px, 92%);
     margin: 18px auto 12px;
 }
@@ -366,61 +568,88 @@ body > * {
 .progress-info {
     display: flex;
     justify-content: space-between;
+
     margin-bottom: 7px;
+
     color: #E8E4D9;
 }
 
 .progress-bar {
     width: 100%;
-    height: 13px;
-    background: #0D1323;
+    height: 12px;
+
+    background: rgba(5, 11, 25, .72);
+
     border-radius: 999px;
     overflow: hidden;
+
     border: 1px solid rgba(216, 180, 90, .22);
 }
 
 .progress-fill {
     width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, #8E5BC2, var(--gold), #F7E3A3);
+
+    background: linear-gradient(
+            90deg,
+            #8E5BC2,
+            var(--gold),
+            #F7E3A3
+    );
+
     transition: .4s;
 }
 
-/* =====================================
-   MENU DE TÓPICOS
-===================================== */
+/* =========================================================
+   7. NAVEGAÇÃO DOS TÓPICOS
+========================================================= */
+
 .topic-nav {
+    position: relative;
+    z-index: 2;
+
     width: min(1200px, 92%);
-    margin: 0 auto 18px;
+    margin: 0 auto 22px;
+
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
     justify-content: center;
+
     padding: 8px 0;
 }
 
 .topic-nav button {
-    border: 1px solid rgba(255, 255, 255, .07);
-    cursor: pointer;
     padding: 9px 14px;
+
+    border: 1px solid rgba(255,255,255,.055);
     border-radius: 10px;
-    background: rgba(21, 26, 43, .94);
+
+    cursor: pointer;
+
+    background: rgba(21, 26, 43, .76);
     color: #F2F1EE;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
     transition: .22s;
+
     font-size: .92rem;
     font-family: inherit;
     font-weight: 700;
 }
 
 .topic-nav button:hover {
-    background: rgba(142, 91, 194, .25);
-    border-color: rgba(216, 180, 90, .5);
+    background: rgba(142,91,194,.22);
+    border-color: rgba(216,180,90,.5);
     transform: translateY(-2px);
 }
 
-/* =====================================
-   LAYOUT
-===================================== */
+/* =========================================================
+   8. LAYOUT GERAL
+========================================================= */
+
 .container {
     width: min(1200px, 92%);
     margin: auto;
@@ -440,12 +669,125 @@ body > * {
     grid-template-columns: 1fr 1fr;
     gap: 18px;
     align-items: stretch;
-    margin-bottom: 22px;
+
+    margin-bottom: 18px;
 }
 
-/* =====================================
-   QUESTÕES
-===================================== */
+/* =========================================================
+   9. CARDS
+========================================================= */
+
+.welcome-card,
+.content-card,
+.question-card,
+.svg-card,
+.auradon-advice,
+.score-card,
+.medal-card,
+.action-card {
+    background:
+            linear-gradient(
+                    145deg,
+                    rgba(20, 26, 44, .86),
+                    rgba(10, 16, 30, .86)
+            );
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(216,180,90,.16);
+    border-radius: 16px;
+    box-shadow:
+            0 12px 35px rgba(0,0,0,.22),
+            inset 0 1px 0 rgba(255,255,255,.025);
+    padding: 24px;
+}
+
+.content-card {
+    line-height: 1.8;
+}
+
+.svg-card {
+    overflow: hidden;
+}
+
+.svg-card svg {
+    width: 100%;
+    height: auto;
+}
+
+.welcome-course-card,
+.auradon-advice {
+    min-height: 172px;
+}
+
+.welcome-course-card {
+    border-color: rgba(216,180,90,.36);
+}
+
+/* =========================================================
+   10. CONSELHOS DE AURADON
+========================================================= */
+
+.auradon-advice {
+    position: relative;
+    margin-bottom: 0;
+    border-color: rgba(216,180,90,.34);
+}
+
+.auradon-advice h3 {
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    margin-bottom: 12px;
+}
+
+.advice-content {
+    min-height: 76px;
+    padding-right: 175px;
+}
+
+.auradon-advice p {
+    font-style: italic;
+    line-height: 1.55;
+    font-size: 1.12rem;
+}
+
+.auradon-advice .author {
+    margin-top: 10px;
+    color: #C9B37E;
+    text-align: right;
+}
+
+.advice-btn {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+
+    margin: 0;
+    padding: 9px 16px;
+
+    border: 1px solid rgba(216,180,90,.62);
+    border-radius: 11px;
+
+    background: rgba(142,91,194,.14);
+    color: var(--gold-light);
+
+    font-family: inherit;
+    font-size: .92rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.advice-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold-light);
+    box-shadow: 0 6px 18px rgba(216,180,90,.16);
+}
+
+/* =========================================================
+   11. QUESTÕES
+========================================================= */
+
 .question-card h3 {
     color: var(--gold);
     margin-bottom: 15px;
@@ -466,10 +808,13 @@ body > * {
     border: none;
     cursor: pointer;
     text-align: left;
+
     padding: 14px;
     border-radius: 12px;
+
     background: #253041;
     color: white;
+
     transition: .25s;
 }
 
@@ -490,50 +835,123 @@ body > * {
     opacity: .8;
 }
 
-/* =====================================
-   FEEDBACK
-===================================== */
+/* =========================================================
+   12. FEEDBACK
+========================================================= */
+
 .feedback {
     display: none;
+
     margin-top: 15px;
     padding: 15px;
+
     border-radius: 12px;
     line-height: 1.6;
 }
 
 .feedback.correct {
     display: block;
-    background: rgba(35, 134, 54, .2);
+    background: rgba(35,134,54,.2);
 }
 
 .feedback.wrong {
     display: block;
-    background: rgba(218, 54, 51, .2);
+    background: rgba(218,54,51,.2);
 }
 
-/* =====================================
-   RESULTADOS
-===================================== */
+/* =========================================================
+   13. AULA EM CRIAÇÃO
+========================================================= */
+
+.course-coming-soon {
+    width: min(900px, 92%);
+    margin: 38px auto 70px;
+    padding: 55px 35px;
+
+    text-align: center;
+
+    background:
+            linear-gradient(
+                    145deg,
+                    rgba(22,27,43,.90),
+                    rgba(13,18,32,.86)
+            );
+
+    border: 1px solid rgba(216,180,90,.42);
+    border-radius: 22px;
+
+    box-shadow:
+            0 16px 45px rgba(0,0,0,.28),
+            inset 0 1px 0 rgba(255,255,255,.03);
+
+    backdrop-filter: blur(9px);
+}
+
+.course-coming-soon .coming-soon-icon {
+    font-size: 4.5rem;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 18px rgba(216,180,90,.25));
+}
+
+.course-coming-soon h2 {
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 14px;
+}
+
+.course-coming-soon p {
+    color: #E8E4D9;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.course-coming-soon .coming-soon-highlight {
+    max-width: 650px;
+    margin: 10px auto 26px;
+    color: var(--gold-light);
+    font-style: italic;
+}
+
+.course-coming-soon .secondary-btn {
+    margin-top: 8px;
+}
+
+.course-empty-mode .progress-section,
+.course-empty-mode .topic-nav,
+.course-empty-mode .result-panel,
+.course-empty-mode #courseIntro {
+    display: none;
+}
+
+.course-empty-mode .course-coming-soon {
+    display: block !important;
+}
+
+/* =========================================================
+   14. PAINEL DE RESULTADOS
+========================================================= */
+
 .result-panel {
+    position: relative;
+    z-index: 2;
+
     width: min(1200px, 92%);
     margin: 0 auto;
+
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
+
     padding-bottom: 52px;
 }
 
 .score-card,
 .medal-card,
 .action-card {
-    min-height: 175px;
-    background:
-        linear-gradient(145deg, rgba(22, 27, 43, .98), rgba(13, 18, 32, .98));
-    border-radius: 16px;
+    min-height: 165px;
     padding: 22px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, .09);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, .20);
 }
 
 .score-number {
@@ -561,47 +979,303 @@ body > * {
     margin-bottom: 8px;
 }
 
-.result-panel .medal-card:nth-child(5),
-.result-panel .medal-card:nth-child(6),
-.result-panel .action-card {
-    grid-column: span 1;
-}
-
-.result-panel .medal-card:nth-child(5) {
-    grid-column: 1;
-}
-
-.result-panel .medal-card:nth-child(6) {
-    grid-column: 2;
-}
-
-.result-panel .action-card {
-    grid-column: 3;
-}
-
 .action-card {
-    gap: 10px;
+    background:
+            linear-gradient(
+                    145deg,
+                    rgba(21,29,43,.88),
+                    rgba(13,20,32,.88)
+            );
+
+    border-color: rgba(174,0,1,.25);
+
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 18px;
+
+    text-align: center;
+
+    transition: .3s;
+}
+
+.action-card:hover {
+    border-color: rgba(174,0,1,.5);
+    box-shadow: 0 12px 30px rgba(174,0,1,.15);
 }
 
 .action-icon {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 .action-card p {
     color: #B8B8B8;
+    margin: 0;
 }
 
-/* =====================================
-   MODAL
-===================================== */
+/* =========================================================
+   15. CONQUISTAS
+========================================================= */
+
+.achievements-card {
+    text-align: left;
+}
+
+.achievements-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.achievements-header h2 {
+    margin-bottom: 5px;
+}
+
+.achievements-header p {
+    margin: 0;
+    font-size: .85rem;
+    opacity: .75;
+}
+
+.achievements-count {
+    min-width: 55px;
+    padding: 8px 12px;
+
+    border-radius: 999px;
+
+    background: rgba(216,180,90,.15);
+    border: 1px solid rgba(216,180,90,.4);
+
+    color: var(--gold);
+    text-align: center;
+    font-weight: bold;
+}
+
+.achievements-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.08);
+
+    background: rgba(255,255,255,.03);
+
+    transition: .25s;
+}
+
+.achievement-item.unlocked {
+    border-color: rgba(216,180,90,.45);
+    background: rgba(216,180,90,.08);
+}
+
+.achievement-item.locked {
+    opacity: .55;
+}
+
+.achievement-item.unlocked:hover {
+    transform: translateX(3px);
+}
+
+.achievement-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+
+    font-size: 1.5rem;
+}
+
+.achievement-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.achievement-info strong {
+    color: var(--gold);
+    font-size: .95rem;
+}
+
+.achievement-info span {
+    font-size: .8rem;
+    line-height: 1.3;
+}
+
+.achievement-info small {
+    font-size: .7rem;
+    opacity: .75;
+}
+
+/* =========================================================
+   16. RETORNO DO ALUNO
+========================================================= */
+
+.returning-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+}
+
+.returning-character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.returning-character-icon {
+    font-size: 4rem;
+}
+
+.returning-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 20px;
+
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(216,180,90,.3);
+    border-radius: 16px;
+}
+
+.info-card strong {
+    color: var(--gold);
+    font-size: 1.2rem;
+}
+
+.returning-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* =========================================================
+   17. ELEMENTOS AUXILIARES
+========================================================= */
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.character-grid button {
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    transition: .25s;
+}
+
+.character-grid button:hover {
+    transform: translateY(-4px);
+}
+
+.topic-svg {
+    margin-top: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.badge {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 10px;
+    border-radius: 999px;
+
+    background: var(--gold);
+    color: black;
+    font-size: .8rem;
+}
+
+.badge-easy {
+    background: #238636;
+    color: white;
+}
+
+.badge-medium {
+    background: var(--gold);
+    color: black;
+}
+
+.badge-hard {
+    background: var(--red);
+    color: white;
+}
+
+.student-input {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 14px;
+
+    border-radius: 12px;
+    border: none;
+
+    font-size: 1rem;
+}
+
+.reading-box {
+    background: #F8F4E8;
+    color: #333;
+
+    border-left: 6px solid var(--gold);
+    padding: 20px;
+    margin: 20px 0;
+
+    border-radius: 12px;
+}
+
+.reading-content {
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* =========================================================
+   18. MODAL
+========================================================= */
+
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, .75);
+
+    background: rgba(0,0,0,.75);
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     z-index: 9999;
 }
 
@@ -610,10 +1284,14 @@ body > * {
 }
 
 .modal-content {
+    position: relative;
+
     width: min(850px, 95%);
-    background: #111827;
     padding: 40px;
+
+    background: #111827;
     border-radius: 20px;
+
     text-align: center;
     box-shadow: var(--shadow);
 }
@@ -627,30 +1305,71 @@ body > * {
     margin-top: 25px;
     border: none;
     cursor: pointer;
+
     padding: 14px 22px;
     border-radius: 12px;
+
     background: var(--gold);
     color: black;
+
     font-weight: bold;
 }
 
-/* =====================================
-   BADGES
-===================================== */
-.badge {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: var(--gold);
-    color: black;
-    font-size: .8rem;
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+
+    width: 38px;
+    height: 38px;
+
+    margin-top: 0 !important;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent !important;
+    color: #D4AF37 !important;
+
+    font-size: 2rem;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: .2s;
 }
 
-/* =====================================
-   RESPONSIVIDADE
-===================================== */
+.modal-close:hover {
+    background: rgba(212,175,55,.15) !important;
+    transform: scale(1.08);
+}
+
+/* =========================================================
+   19. RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .hero::before {
+        opacity: .20;
+        width: 280px;
+        height: 310px;
+        bottom: 0;
+    }
+
+    .hero::after {
+        opacity: .48;
+        width: 190px;
+        height: 215px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 4.5vw, 3.1rem);
+    }
+}
+
 @media (max-width: 950px) {
+
     .intro-grid {
         grid-template-columns: 1fr;
     }
@@ -659,21 +1378,38 @@ body > * {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .result-panel .medal-card:nth-child(5),
-    .result-panel .medal-card:nth-child(6),
-    .result-panel .action-card {
-        grid-column: auto;
+    .hero {
+        min-height: 340px;
     }
 
-    .hero::before,
+    .hero::before {
+        opacity: .12;
+        width: 230px;
+        height: 260px;
+        bottom: 0;
+    }
+
     .hero::after {
-        opacity: .10;
+        opacity: .24;
+        width: 150px;
+        height: 180px;
     }
 }
 
 @media (max-width: 600px) {
+
+    #welcomeScreen {
+        padding: 20px;
+    }
+
+    #welcomeScreen::before,
+    #welcomeScreen::after {
+        opacity: .05;
+    }
+
     .hero {
-        padding: 34px 15px 22px;
+        min-height: 310px;
+        padding: 28px 15px 22px;
     }
 
     .hero h1 {
@@ -681,11 +1417,26 @@ body > * {
     }
 
     .course-tagline {
-        font-size: 1rem;
+        font-size: .98rem;
     }
 
     .castle-icon {
         font-size: 3rem;
+    }
+
+    .hero::before {
+        opacity: .08;
+        width: 180px;
+        height: 210px;
+        bottom: 0;
+    }
+
+    .hero::after {
+        opacity: .15;
+        width: 120px;
+        height: 145px;
+        right: 0;
+        top: 40px;
     }
 
     .topic-nav {
@@ -714,743 +1465,7 @@ body > * {
     .score-number {
         font-size: 3rem;
     }
-}
 
-.character-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.character-grid button {
-    border: none;
-    cursor: pointer;
-    padding: 20px;
-    border-radius: 16px;
-    font-size: 1.1rem;
-    transition: .25s;
-}
-
-.character-grid button:hover {
-    transform: translateY(-4px);
-}
-
-
-.topic-svg {
-    margin-top: 20px;
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.badge-easy {
-    background: #238636;
-    color: white;
-}
-
-.badge-medium {
-    background: #D8B45A;
-    color: black;
-}
-
-.badge-hard {
-    background: #C93B4B;
-    color: white;
-}
-
-.clear-save-btn {
-    background: linear-gradient(135deg, #C93B4B, #7a0000);
-    color: white;
-    border: none;
-    border-radius: 14px;
-    padding: 14px 28px;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.clear-save-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(174, 0, 1, .35);
-}
-
-.student-input {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 14px;
-    border-radius: 12px;
-    border: none;
-    font-size: 1rem;
-}
-
-.dev-btn {
-    width: 100%;
-    margin-top: 10px;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    background: #24527D;
-    color: white;
-    font-weight: bold;
-}
-
-.reading-box {
-    background: #f8f4e8;
-    color: #333;
-    border-left: 6px solid #D8B45A;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 12px;
-}
-
-.reading-content {
-    line-height: 1.8;
-    white-space: pre-line;
-}
-
-.returning-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    text-align: center;
-}
-
-.returning-character {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.returning-character-icon {
-    font-size: 4rem;
-}
-
-.returning-stats {
-    display: grid;
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(180px, 1fr)
-        );
-    gap: 16px;
-}
-
-.info-card {
-    background: rgba(255, 255, 255, .05);
-    border: 1px solid rgba(216, 180, 90, .3);
-    border-radius: 16px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.info-card strong {
-    color: #D8B45A;
-    font-size: 1.2rem;
-}
-
-.returning-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.action-card {
-    background: linear-gradient(
-            145deg,
-            #151d2b,
-            #0d1420
-    );
-    border: 1px solid rgba(174, 0, 1, .25);
-    border-radius: 24px;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    text-align: center;
-    transition: .3s;
-}
-
-.action-card:hover {
-    border-color: rgba(174, 0, 1, .5);
-    box-shadow: 0 12px 30px rgba(174, 0, 1, .15);
-}
-
-.action-icon {
-    font-size: 4rem;
-}
-
-.action-card h2 {
-    margin: 0;
-}
-
-.action-card p {
-    color: #B8B8B8;
-    margin: 0;
-}
-
-.auradon-advice {
-    background: rgba(255,255,255,.08);
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: 16px;
-    padding: 20px;
-}
-
-.auradon-advice h3 {
-    color: #ffd700;
-}
-
-.auradon-advice p {
-    font-style: italic;
-    line-height: 1.6;
-    font-size: 1.2rem;
-}
-
-.auradon-advice .author {
-    margin-top: 10px;
-    text-align: right;
-    color: #c9b37e;
-}
-
-
-
-/* =====================================
-   CONSELHO DE AURADON
-===================================== */
-
-.advice-btn {
-    margin-top: 18px;
-    padding: 10px 18px;
-    border: 1px solid rgba(216, 180, 90, .55);
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(142, 91, 194, .22), rgba(22, 138, 173, .18));
-    color: #F7E3A3;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: .25s ease;
-}
-
-.advice-btn:hover {
-    transform: translateY(-2px);
-    border-color: #F7E3A3;
-    box-shadow: 0 6px 18px rgba(216, 180, 90, .18);
-}
-
-.advice-btn:active {
-    transform: translateY(0);
-}/* =====================================
-   CARDS
-===================================== */
-.welcome-card,
-.content-card,
-.question-card,
-.svg-card,
-.auradon-advice {
-    background:
-        linear-gradient(145deg, rgba(22, 27, 43, .98), rgba(13, 18, 32, .98));
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .22);
-    border: 1px solid rgba(255, 255, 255, .09);
-}
-
-.welcome-card h2,
-.content-card h2 {
-    font-family: 'Cinzel', serif;
-    color: var(--gold);
-    margin-bottom: 12px;
-}
-
-.welcome-course-card {
-    border-color: rgba(216, 180, 90, .45);
-    min-height: 185px;
-}
-
-.content-card {
-    line-height: 1.8;
-}
-
-.svg-card svg {
-    width: 100%;
-    height: auto;
-}
-
-.auradon-advice {
-    position: relative;
-    margin-bottom: 0;
-    min-height: 185px;
-    border-color: rgba(216, 180, 90, .45);
-}
-
-.auradon-advice h3 {
-    color: var(--gold-light);
-    font-family: 'Cinzel', serif;
-    margin-bottom: 12px;
-}
-
-.advice-content {
-    min-height: 84px;
-    padding-right: 185px;
-}
-
-.auradon-advice p {
-    font-style: italic;
-    line-height: 1.55;
-    font-size: 1.12rem;
-}
-
-.auradon-advice .author {
-    margin-top: 10px;
-    color: #C9B37E;
-}
-
-.advice-btn {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    margin: 0;
-    padding: 9px 16px;
-    border: 1px solid rgba(216, 180, 90, .62);
-    border-radius: 11px;
-    background: rgba(142, 91, 194, .14);
-    color: var(--gold-light);
-    font-family: inherit;
-    font-size: .92rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: .25s ease;
-}
-
-.advice-btn:hover {
-    transform: translateY(-2px);
-    border-color: var(--gold-light);
-    box-shadow: 0 6px 18px rgba(216, 180, 90, .16);
-}
-
-
-
-
-/* =========================================================
-   AURADON ACADEMY — LAYOUT FINAL
-   Etapa final de identidade visual
-   Mantém os hooks/classes usados pelo JavaScript.
-========================================================= */
-
-/* ---------- Fundo ---------- */
-body {
-    background:
-        radial-gradient(circle at 10% 24%, rgba(142, 91, 194, .42), transparent 27%),
-        radial-gradient(circle at 90% 24%, rgba(22, 138, 173, .34), transparent 28%),
-        radial-gradient(circle at 50% 100%, rgba(201, 59, 75, .14), transparent 32%),
-        linear-gradient(135deg, #1B1538 0%, #0B1428 50%, #0D2433 100%);
-}
-
-/* ---------- Campo de estrelas ---------- */
-body::before {
-    z-index: 0;
-    opacity: .72;
-    background-image:
-        radial-gradient(circle at 7% 14%, rgba(255,255,255,.95) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 17% 68%, rgba(247,227,163,.82) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 28% 28%, rgba(255,255,255,.78) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 39% 82%, rgba(255,255,255,.66) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 52% 16%, rgba(247,227,163,.86) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 63% 72%, rgba(255,255,255,.74) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 76% 10%, rgba(247,227,163,.84) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 88% 58%, rgba(255,255,255,.86) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 95% 84%, rgba(247,227,163,.74) 0 1px, transparent 1.8px);
-}
-
-body::after {
-    z-index: 0;
-    opacity: .28;
-    background-image:
-        radial-gradient(circle at 4% 46%, rgba(142,91,194,.90) 0 1.7px, transparent 3px),
-        radial-gradient(circle at 24% 13%, rgba(216,180,90,.84) 0 1.4px, transparent 2.6px),
-        radial-gradient(circle at 36% 59%, rgba(22,138,173,.88) 0 1.7px, transparent 3px),
-        radial-gradient(circle at 57% 42%, rgba(216,180,90,.74) 0 1.4px, transparent 2.6px),
-        radial-gradient(circle at 72% 87%, rgba(201,59,75,.70) 0 1.7px, transparent 3px),
-        radial-gradient(circle at 84% 35%, rgba(142,91,194,.80) 0 1.4px, transparent 2.8px);
-}
-
-body > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* ---------- Tela inicial ---------- */
-#welcomeScreen {
-    position: relative;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 15% 25%, rgba(142,91,194,.22), transparent 28%),
-        radial-gradient(circle at 85% 25%, rgba(22,138,173,.18), transparent 28%);
-}
-
-#welcomeScreen::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: min(390px, 35vw);
-    height: min(500px, 68vh);
-    background: url("assets/castle.png") left bottom / contain no-repeat;
-    opacity: .11;
-    pointer-events: none;
-}
-
-#welcomeScreen::after {
-    content: "";
-    position: absolute;
-    right: 2%;
-    top: 4%;
-    width: min(250px, 22vw);
-    height: min(270px, 42vh);
-    background: url("assets/auradon-crest.png") center / contain no-repeat;
-    opacity: .10;
-    pointer-events: none;
-}
-
-#welcomeScreen .welcome-card {
-    position: relative;
-    z-index: 2;
-    background: rgba(17, 24, 39, .88);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-/* ---------- Hero ---------- */
-.hero {
-    min-height: 378px;
-    padding: 34px 20px 28px;
-    background:
-        radial-gradient(circle at 20% 35%, rgba(142,91,194,.10), transparent 28%),
-        radial-gradient(circle at 80% 35%, rgba(22,138,173,.08), transparent 28%);
-}
-
-.hero-content {
-    max-width: 1100px;
-}
-
-.castle-icon {
-    font-size: 3.25rem;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 4px 12px rgba(216,180,90,.28));
-}
-
-.hero h1 {
-    font-size: clamp(2.0rem, 4vw, 3.55rem);
-    letter-spacing: .015em;
-    margin-bottom: 6px;
-}
-
-.course-tagline {
-    max-width: 760px;
-    font-size: clamp(1rem, 1.7vw, 1.28rem);
-    margin: 6px auto 9px;
-}
-
-.hero p#courseSubtitle {
-    font-size: .98rem;
-}
-
-/* Castelo à esquerda: cenário, não protagonista. */
-.hero::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    top: auto;
-    width: min(330px, 27vw);
-    height: 350px;
-    opacity: .34;
-    background: url("assets/castle.png") left bottom / contain no-repeat;
-    transform: none;
-    filter: drop-shadow(0 0 18px rgba(142,91,194,.16));
-}
-
-/* Brasão à direita. */
-.hero::after {
-    content: "";
-    position: absolute;
-    right: 1.5%;
-    top: 52px;
-    width: min(230px, 18vw);
-    height: 250px;
-    opacity: .72;
-    background: url("assets/auradon-crest.png") center / contain no-repeat;
-    transform: none;
-    filter: drop-shadow(0 0 18px rgba(216,180,90,.16));
-}
-
-/* ---------- Progresso ---------- */
-.progress-section {
-    position: relative;
-    z-index: 2;
-    width: min(1200px, 92%);
-    margin: 18px auto 12px;
-}
-
-.progress-bar {
-    height: 12px;
-    background: rgba(5, 11, 25, .72);
-}
-
-/* ---------- Tópicos ---------- */
-.topic-nav {
-    position: relative;
-    z-index: 2;
-    width: min(1200px, 92%);
-    margin: 0 auto 22px;
-    gap: 8px;
-}
-
-.topic-nav button {
-    background: rgba(21, 26, 43, .76);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-color: rgba(255,255,255,.055);
-    box-shadow: none;
-}
-
-.topic-nav button:hover {
-    background: rgba(142,91,194,.22);
-}
-
-/* ---------- Cards translúcidos ---------- */
-.welcome-card,
-.content-card,
-.question-card,
-.svg-card,
-.auradon-advice,
-.score-card,
-.medal-card,
-.action-card {
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20, 26, 44, .86),
-            rgba(10, 16, 30, .86)
-        );
-    backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(9px);
-    border: 1px solid rgba(216,180,90,.16);
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.22),
-        inset 0 1px 0 rgba(255,255,255,.025);
-}
-
-.intro-grid {
-    gap: 18px;
-    margin-bottom: 18px;
-}
-
-.welcome-course-card,
-.auradon-advice {
-    min-height: 172px;
-}
-
-.welcome-course-card {
-    border-color: rgba(216,180,90,.36);
-}
-
-.auradon-advice {
-    border-color: rgba(216,180,90,.34);
-}
-
-/* Conselho: botão continua no canto, sem roubar o foco do texto. */
-.advice-content {
-    min-height: 76px;
-    padding-right: 175px;
-}
-
-.advice-btn {
-    right: 18px;
-    bottom: 18px;
-}
-
-/* ---------- Painel de resultados ---------- */
-.result-panel {
-    position: relative;
-    z-index: 2;
-}
-
-.score-card,
-.medal-card,
-.action-card {
-    min-height: 165px;
-}
-
-.action-card {
-    background:
-        linear-gradient(
-            145deg,
-            rgba(21,29,43,.88),
-            rgba(13,20,32,.88)
-        );
-}
-
-/* ---------- Modal ---------- */
-.modal {
-    z-index: 9999;
-}
-
-/* ---------- Responsividade final ---------- */
-@media (max-width: 1100px) {
-    .hero::before {
-        opacity: .20;
-        width: 280px;
-        height: 310px;
-    }
-
-    .hero::after {
-        opacity: .48;
-        width: 190px;
-        height: 215px;
-    }
-
-    .hero h1 {
-        font-size: clamp(2rem, 4.5vw, 3.1rem);
-    }
-}
-
-@media (max-width: 950px) {
-    .hero {
-        min-height: 340px;
-    }
-
-    .hero::before {
-        opacity: .12;
-        width: 230px;
-        height: 260px;
-    }
-
-    .hero::after {
-        opacity: .24;
-        width: 150px;
-        height: 180px;
-    }
-}
-
-@media (max-width: 600px) {
-    #welcomeScreen::before,
-    #welcomeScreen::after {
-        opacity: .05;
-    }
-
-    .hero {
-        min-height: 310px;
-        padding-top: 28px;
-    }
-
-    .hero::before {
-        opacity: .08;
-        width: 180px;
-        height: 210px;
-    }
-
-    .hero::after {
-        opacity: .15;
-        width: 120px;
-        height: 145px;
-        right: 0;
-        top: 40px;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .course-tagline {
-        font-size: .98rem;
-    }
-
-    .welcome-course-card,
-    .auradon-advice {
-        min-height: 160px;
-    }
-}
-
-
-/* =====================================
-   AULA EM CRIAÇÃO
-===================================== */
-.course-coming-soon {
-    width: min(900px, 92%);
-    margin: 38px auto 70px;
-    padding: 55px 35px;
-    text-align: center;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(22, 27, 43, .90),
-            rgba(13, 18, 32, .86)
-        );
-    border: 1px solid rgba(216, 180, 90, .42);
-    border-radius: 22px;
-    box-shadow:
-        0 16px 45px rgba(0, 0, 0, .28),
-        inset 0 1px 0 rgba(255, 255, 255, .03);
-    backdrop-filter: blur(9px);
-}
-
-.course-coming-soon .coming-soon-icon {
-    font-size: 4.5rem;
-    margin-bottom: 15px;
-    filter: drop-shadow(0 0 18px rgba(216, 180, 90, .25));
-}
-
-.course-coming-soon h2 {
-    color: var(--gold);
-    font-family: 'Cinzel', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    margin-bottom: 14px;
-}
-
-.course-coming-soon p {
-    color: #E8E4D9;
-    font-size: 1.15rem;
-    line-height: 1.6;
-}
-
-.course-coming-soon .coming-soon-highlight {
-    max-width: 650px;
-    margin: 10px auto 26px;
-    color: #F7E3A3;
-    font-style: italic;
-}
-
-.course-coming-soon .secondary-btn {
-    margin-top: 8px;
-}
-
-.course-empty-mode .progress-section,
-.course-empty-mode .topic-nav,
-.course-empty-mode .result-panel {
-    display: none;
-}
-
-.course-empty-mode #courseIntro {
-    display: none;
-}
-
-.course-empty-mode .course-coming-soon {
-    display: block !important;
-}
-
-@media (max-width: 600px) {
     .course-coming-soon {
         padding: 40px 22px;
         margin-top: 25px;
@@ -1459,22 +1474,9 @@ body > * {
     .course-coming-soon .coming-soon-icon {
         font-size: 3.5rem;
     }
-}
 
-
-/* Matérias que ainda estão em produção continuam visíveis na tela inicial. */
-.subject-btn.subject-coming-soon {
-    position: relative;
-    opacity: .78;
-    border-color: rgba(216, 180, 90, .12);
-}
-
-.subject-btn.subject-coming-soon::after {
-    content: "Em criação";
-    display: block;
-    margin-top: 4px;
-    color: #D8B45A;
-    font-size: .72rem;
-    font-weight: 600;
-    opacity: .9;
+    .welcome-course-card,
+    .auradon-advice {
+        min-height: 160px;
+    }
 }
