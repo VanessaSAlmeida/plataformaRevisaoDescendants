@@ -138,6 +138,10 @@ function initializeWelcomeScreen() {
         .getElementById("backToWelcomeBtn")
         .addEventListener("click", backToWelcome);
 
+    document
+        .getElementById("resetAdventureBtn")
+        .addEventListener("click", resetEntireAdventure);
+
     const comingSoonBackBtn =
         document.getElementById("comingSoonBackBtn");
 
@@ -1952,4 +1956,76 @@ function closeFinalModal() {
     // Garante que o painel esteja atualizado
     updateDashboard();
     updateAchievementsPanel();
+}
+
+function resetEntireAdventure() {
+
+    const confirmReset = confirm(
+        "⚠️ Deseja realmente reiniciar toda a aventura?\n\n" +
+        "Todo o progresso, conquistas, matérias respondidas " +
+        "e dados do aluno serão apagados.\n\n" +
+        "Esta ação não pode ser desfeita."
+    );
+
+    if (!confirmReset) {
+        return;
+    }
+
+    // Apaga o progresso completo do aluno atual
+    if (STORAGE_KEY) {
+        localStorage.removeItem(STORAGE_KEY);
+    }
+
+    // Remove as referências do último aluno/matéria
+    localStorage.removeItem("auradon-last-student");
+    localStorage.removeItem("auradon-last-subject");
+
+    // Limpa o estado da aplicação
+    STORAGE_KEY = "";
+    returningStudent = false;
+    selectedCharacterKey = null;
+    selectedCharacter = null;
+    selectedSubject = null;
+    studentName = "";
+    savedProgressPercentage = 0;
+    savedPerformance = "-";
+    unlockedAchievements = {};
+
+    answeredQuestions = 0;
+    correctAnswers = 0;
+    totalQuestions = 0;
+
+    // Limpa estatísticas de dificuldade
+    difficultyStats.easy.correct = 0;
+    difficultyStats.easy.total = 0;
+
+    difficultyStats.medium.correct = 0;
+    difficultyStats.medium.total = 0;
+
+    difficultyStats.hard.correct = 0;
+    difficultyStats.hard.total = 0;
+
+    // Volta para a tela inicial como novo aluno
+    document
+        .getElementById("mainContent")
+        .classList.add("hidden");
+
+    document
+        .getElementById("welcomeScreen")
+        .classList.remove("hidden");
+
+    showNewStudentPanel();
+
+    // Limpa seleções visuais
+    document
+        .querySelectorAll(".character-btn, .subject-btn")
+        .forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+    document
+        .getElementById("studentNameInput")
+        .value = "";
+
+    console.log("Auradon Academy: aventura reiniciada.");
 }

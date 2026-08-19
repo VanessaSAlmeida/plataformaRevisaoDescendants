@@ -295,35 +295,49 @@ body > * {
     min-width: 250px;
     margin-top: 20px;
     padding: 18px;
-
     border: none;
     border-radius: 14px;
-
     cursor: pointer;
-
     background: var(--gold);
     color: #111827;
-
     font-size: 1.1rem;
     font-weight: bold;
+    transition:
+            transform .25s ease,
+            box-shadow .25s ease,
+            background .25s ease;
+}
+
+#startJourneyBtn:hover,
+#continueJourneyBtn:hover,
+#changeStudentBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(216, 180, 90, .25);
+}
+
+#resetAdventureBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(201, 59, 75, .35);
+}
+
+#startJourneyBtn:active,
+#continueJourneyBtn:active,
+#changeStudentBtn:active,
+#resetAdventureBtn:active {
+    transform: translateY(0);
 }
 
 .secondary-btn {
     min-width: 210px;
     padding: 11px 25px;
-
     background: rgba(17, 20, 38, .78);
     color: var(--gold-light);
-
     border: 1px solid rgba(216, 180, 90, .72);
     border-radius: 12px;
-
     font-family: inherit;
     font-size: 1rem;
     font-weight: 700;
-
     cursor: pointer;
-
     transition: all .25s ease;
     box-shadow: 0 6px 18px rgba(0, 0, 0, .24);
 }
