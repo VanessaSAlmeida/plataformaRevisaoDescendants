@@ -57,7 +57,7 @@ window.courseData = {
                     id: "pt-05",
                     difficulty: "medium",
                     learningObjective: "Utilizar adequadamente mal e mau considerando o contexto e a oposição mau × bom.",
-                    question: "Durante a investigação, Evie percebeu que o suspeito havia tido um _____ comportamento.",
+                    question: "Durante a investigação, Red percebeu que o suspeito havia tido um _____ comportamento.",
                     answers: ["mal", "mau", "bem", "boa"],
                     correct: 1,
                     explanation: "Usamos \"mau\" porque a palavra caracteriza o substantivo \"comportamento\". A oposição é: bom comportamento × mau comportamento."
