@@ -211,6 +211,8 @@ function initializeWelcomeScreen() {
 
         });
     }
+
+    displayAppVersion();
 }
 
 function detectReturningStudent() {
@@ -2056,4 +2058,12 @@ function resetEntireAdventure() {
         .value = "";
 
     console.log("Auradon Academy: aventura reiniciada.");
+}
+
+function displayAppVersion() {
+    const versionElement = document.getElementById("appVersion");
+
+    if (versionElement) {
+        versionElement.textContent = APP_VERSION;
+    }
 }

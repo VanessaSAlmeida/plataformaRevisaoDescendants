@@ -1494,3 +1494,12 @@ body > * {
         min-height: 160px;
     }
 }
+
+.app-version {
+    position: fixed;
+    bottom: 8px;
+    right: 12px;
+    font-size: 11px;
+    opacity: 0.45;
+    letter-spacing: 0.5px;
+}
