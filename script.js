@@ -3,6 +3,10 @@ id = "js-auradon-engine"
 /* ==========================================
    ESTADO GLOBAL
 ========================================== */
+const APP_VERSION = "1.3";
+const VERSION_KEY = "auradon-academy-version";
+const STORAGE_KEY_PREFIX = "auradon-";
+
 let STORAGE_KEY = "";
 let returningStudent = false;
 let selectedCharacterKey = null;
@@ -107,9 +111,31 @@ const achievements = {
 };
 
 function getStorageKey() {
-    return "auradon-" + studentName
+    return STORAGE_KEY_PREFIX + studentName
         .trim()
         .toLowerCase();
+}
+
+function checkAppVersion() {
+    const savedVersion = localStorage.getItem(VERSION_KEY);
+
+    // Primeiro acesso
+    if (!savedVersion) {
+        localStorage.setItem(VERSION_KEY, APP_VERSION);
+        console.log(`Primeiro acesso. Versão registrada: ${APP_VERSION}.`);
+        return;
+    }
+
+    if (savedVersion === APP_VERSION) {
+        return;
+    }
+
+    console.log(
+        `Nova versão detectada: ${savedVersion} → ${APP_VERSION}.`
+    );
+
+    localStorage.clear();
+    localStorage.setItem(VERSION_KEY, APP_VERSION);
 }
 
 /* ==========================================
@@ -119,6 +145,8 @@ function getStorageKey() {
 document.addEventListener("DOMContentLoaded", initializeWelcomeScreen);
 
 function initializeWelcomeScreen() {
+    checkAppVersion();
+
     buildCharacterSelector();
     buildSubjectSelector("subjectGrid");
 
