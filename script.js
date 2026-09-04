@@ -3,7 +3,7 @@ id = "js-auradon-engine"
 /* ==========================================
    ESTADO GLOBAL
 ========================================== */
-const APP_VERSION = "1.3";
+const APP_VERSION = "1.4";
 const VERSION_KEY = "auradon-academy-version";
 const STORAGE_KEY_PREFIX = "auradon-";
 
@@ -65,11 +65,11 @@ const difficultyStats = {
 };
 
 const subjects = {
-    matematica: {name: "➕ Matemática", file: "data/matematica.js", available: true},
-    portugues: {name: "📖 Português", file: "data/portugues.js", available: true},
+    matematica: {name: "➕ Matemática", file: "data/matematica.js", available: false},
+    portugues: {name: "📖 Português", file: "data/portugues.js", available: false},
     ciencias: {name: "🧪 Ciências", file: "data/ciencias.js", available: false},
     historia: {name: "🏺 História", file: "data/historia.js", available: false},
-    geografia: {name: "🌎 Geografia", file: "data/geografia.js", available: false},
+    geografia: {name: "🌎 Geografia", file: "data/geografia.js", available: true},
     ingles: {name: "🇬🇧 Inglês", file: "data/ingles.js", available: false}
 };
 
