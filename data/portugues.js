@@ -2,222 +2,64 @@ window.courseData = {
     title: "✨ Português em Auradon",
     tagline: "Onde cada palavra pode transformar uma pequena ideia em uma grande aventura!",
     subtitle: "Português • 3º Período • 5º Ano",
-    description: "Descubra pistas, palavras e mistérios enquanto aprimora seus conhecimentos de Língua Portuguesa.",
-
+    description: "Entre contos misteriosos, palavras e desafios de gramática, prepare-se para uma nova aventura de aprendizagem em Auradon.",
     topics: [
         {
-            icon: "🕵️",
-            title: "Conto de Enigma",
-            svg: "",
-            content: `<h3>🔎 O que é um conto de enigma?</h3><p>O conto de enigma é uma narrativa que apresenta um mistério ou problema que precisa ser solucionado. Ao longo da história, o leitor acompanha personagens, acontecimentos e pistas que ajudam a descobrir o que aconteceu.</p><h3>🧩 As pistas</h3><p>As pistas são informações importantes para resolver o mistério. Elas podem aparecer em objetos, falas, comportamentos, acontecimentos ou detalhes do ambiente.</p><h3>🏰 A resolução</h3><p>No final, as pistas são relacionadas e o mistério é esclarecido. Um bom leitor observa os detalhes e usa as informações do texto para chegar à conclusão.</p><h3>📚 Texto-base: O Mistério da Coroa</h3><p>Na manhã do grande baile de Auradon, a coroa real desapareceu da sala do trono. A porta estava trancada e nenhuma janela havia sido aberta.</p><p>Mal encontrou uma pequena marca de lama perto da estante. Evie percebeu que havia um livro fora do lugar. Uma encontrou uma fita azul presa atrás da cortina. Red observou que a fita tinha o mesmo desenho de uma fita usada para decorar a caixa onde a coroa costumava ser guardada.</p><p>As quatro observaram as pistas com atenção e descobriram que o livro fora do lugar escondia uma pequena passagem atrás da estante. A passagem levava até uma sala usada para guardar objetos do baile. Elas se surpreenderam ao encontrar a coroa ali, dentro da caixa de decoração!</p><p>O mistério foi resolvido porque as personagens relacionaram as pistas encontradas e seguiram a sequência dos acontecimentos.</p>`,
+            icon: "👻", title: "Conto de Assombração", svg: "",
+            content: `<h3>👻 O que é um conto de assombração?</h3><p>Os contos de assombração são narrativas curtas que costumam atrair a atenção dos leitores por apresentarem elementos desconhecidos, inexplicáveis e cheios de fantasia. Essas histórias possuem a presença de seres e lugares sobrenaturais, como fantasmas, monstros e casas assombradas.</p><h3>🏰 Características principais</h3><p><ul><li>Enredos repletos de suspense e mistério</li><li>Geram medo e tensão nos leitores</li><li>Misturam eventos que transitam entre a realidade e a imaginação</li><li>Ultrapassam os limites da realidade, apresentando ações e situações que fogem da normalidade</li><li>Permitem o uso de boa dose de criatividade e imaginação na escrita</li></ul></p><br><h3>📖 Texto-base: O Sussurro da Torre</h3><p>Era uma noite fria em Auradon. Mal, Evie e Uma atravessavam o corredor da torre quando ouviram um sussurro vindo de uma sala abandonada.</p><p>— Vocês também ouviram? — perguntou Mal, olhando para os lados.</p><p>As três se entreolharam e decidiram entrar devagar na sala. Estava tudo escuro e uma janela batia com o vento. O sussurro ficou mais alto. De repente, uma sombra passou pela parede. Evie levou um susto e segurou a mão de Mal, mas Uma apontou para janela, onde no céu dava para ver uma nuvem passando na frente da lua. Ela sorriu para as duas e chegou mais perto da janela ouvindo com atenção...</p><p>Ali era a origem o barulho!</p><p>Ela apontou para a cortina e Mal a afastou com um puxão. Atrás dela, havia uma pequena caixa. Evie pegou a caixa e quando a abriu, descobriu um antigo aparelho que reproduzia gravações. O sussurro misterioso vinha dali. Eram gravações antigas de discursos da Fada Madrinha.</p><p>As meninas respiraram aliviadas e riram. O que parecia sobrenatural tinha uma explicação, mas o suspense da noite continuou na memória de todas.</p>`,
             questions: [
-                {
-                    id: "pt-01",
-                    difficulty: "easy",
-                    learningObjective: "Identificar e analisar as características do conto de enigma.",
-                    question: "Qual característica principal faz com que \"O Mistério da Coroa\" seja um conto de enigma?",
-                    answers: ["A história apresenta um mistério que precisa ser solucionado.", "A história explica como preparar uma festa.", "A história apresenta somente informações sobre um lugar.", "A história ensina uma receita."],
-                    correct: 0,
-                    explanation: "O conto de enigma apresenta um mistério ou problema que precisa ser solucionado ao longo da narrativa."
-                },
-                {
-                    id: "pt-02",
-                    difficulty: "medium",
-                    learningObjective: "Reconhecer pistas em um conto de enigma.",
-                    question: "Quais elementos funcionam como pistas para solucionar o mistério?",
-                    answers: ["A marca de lama, o livro fora do lugar e a fita azul.", "A coroa, o baile e a sala do trono.", "O castelo, o baile e as personagens.", "A porta, a janela e a sala, sem nenhuma relação com o mistério."],
-                    correct: 0,
-                    explanation: "A marca de lama, o livro fora do lugar e a fita azul são detalhes usados pelas personagens para investigar o desaparecimento."
-                },
-                {
-                    id: "pt-03",
-                    difficulty: "hard",
-                    learningObjective: "Compreender a resolução do mistério em um conto de enigma.",
-                    question: "Por que as personagens conseguiram descobrir onde estava a coroa?",
-                    answers: ["Porque encontraram a coroa por acaso.", "Porque relacionaram as pistas e seguiram as informações da história.", "Porque alguém contou imediatamente onde a coroa estava.", "Porque a porta da sala do trono ficou aberta."],
-                    correct: 1,
-                    explanation: "A resolução acontece quando as personagens relacionam as pistas: o livro fora do lugar levou à passagem e a passagem levou ao local onde a coroa estava."
-                }
+                { id:"pt-01", difficulty:"easy", learningObjective:"Analisar contos de assombração, reconhecendo suas características, elementos estruturais e as intenções, sentimentos e motivos das personagens.", question:"Qual característica do texto \"O Sussurro da Torre\" ajuda a identificá-lo como um conto de assombração?", answers:["A presença de um ambiente misterioso, acontecimentos assustadores e suspense.","A apresentação de instruções para construir uma torre.","A descrição de uma receita preparada pelas personagens.","A explicação de regras para um jogo."], correct:0, explanation:"O texto cria suspense por meio da noite fria, da sala abandonada, do sussurro e da sombra misteriosa, características comuns aos contos de assombração." },
+                { id:"pt-02", difficulty:"medium", learningObjective:"Analisar contos de assombração, reconhecendo suas características, elementos estruturais e as intenções, sentimentos e motivos das personagens.", question:"Qual sentimento Mal demonstra quando ouve o sussurro e entra na sala escura?", answers:["Medo e preocupação.","Alegria e entusiasmo.","Tédio e indiferença.","Raiva e vontade de ir embora."], correct:0, explanation:"Mal demonstra medo e preocupação ao olhar para os lados e perguntar se as outras também ouviram o sussurro." },
+                { id:"pt-03", difficulty:"hard", learningObjective:"Analisar contos de assombração, reconhecendo suas características, elementos estruturais e as intenções, sentimentos e motivos das personagens.", question:"Por que o autor revela no final que o sussurro vinha de um aparelho de gravação?", answers:["Para mostrar que o acontecimento misterioso tinha uma explicação e surpreender o leitor.","Para provar que as personagens não entraram na sala.","Para transformar o texto em uma receita.","Para explicar como funciona uma janela."], correct:0, explanation:"A revelação resolve o mistério, mostra que havia uma explicação para o sussurro e produz uma surpresa no final da narrativa." },
+                { id:"pt-04", difficulty:"easy", learningObjective:"Analisar contos de assombração, reconhecendo suas características, elementos estruturais e as intenções, sentimentos e motivos das personagens.", question:"Qual é a principal característica que define um conto de assombração?", answers:["Presença de personagens históricos reais.","Elementos desconhecidos, inexplicáveis e sobrenaturais.","Histórias de amor e romance.","Narrativas sobre aventuras na natureza."], correct:1, explanation:"Os contos de assombração apresentam elementos desconhecidos, inexplicáveis e cheios de fantasia, com seres e lugares sobrenaturais, como fantasmas, monstros e casas assombradas." },
+                { id:"pt-05", difficulty:"hard", learningObjective:"Analisar contos de assombração, reconhecendo suas características, elementos estruturais e as intenções, sentimentos e motivos das personagens.", question:"Como os eventos são apresentados nos contos de assombração?", answers:["De forma totalmente científica e explicável.","Apenas com fatos históricos comprovados.","Misturando realidade e imaginação.","Somente com situações do cotidiano."], correct:2, explanation:"Contos de assombração misturam eventos que transitam entre a realidade e a imaginação, apresentando ações e situações que fogem da normalidade." }
             ]
         },
         {
-            icon: "⚖️", title: "Mal ou Mau?", svg: "",
-            content: `<h3>⚖️ Mal × mau</h3><p>Para escolher entre <strong>mal</strong> e <strong>mau</strong>, podemos observar a ideia de oposição.</p><p><strong>Mal</strong> é o contrário de <strong>bem</strong>.</p><p><strong>Mau</strong> é o contrário de <strong>bom</strong>.</p>`,
-            questions: [
-                {
-                    id: "pt-04",
-                    difficulty: "easy",
-                    learningObjective: "Utilizar adequadamente mal e mau considerando a oposição mal × bem.",
-                    question: "Depois de receber uma notícia desagradável durante a investigação, Red se sentiu muito _____.",
-                    answers: ["mau", "mal", "bom", "bem"],
-                    correct: 1,
-                    explanation: "Usamos \"mal\" porque a palavra indica como Red se sentiu. Podemos fazer a oposição: bem × mal."
-                },
-                {
-                    id: "pt-05",
-                    difficulty: "medium",
-                    learningObjective: "Utilizar adequadamente mal e mau considerando o contexto e a oposição mau × bom.",
-                    question: "Durante a investigação, Red percebeu que o suspeito havia tido um _____ comportamento.",
-                    answers: ["mal", "mau", "bem", "boa"],
-                    correct: 1,
-                    explanation: "Usamos \"mau\" porque a palavra caracteriza o substantivo \"comportamento\". A oposição é: bom comportamento × mau comportamento."
-                },
-                {
-                    id: "pt-06",
-                    difficulty: "hard",
-                    learningObjective: "Utilizar adequadamente mal e mau considerando o contexto e a oposição mau × bom.",
-                    question: "Qual opção completa corretamente a frase: Evie estava muito ____ vestida para o baile. Ela achou que a comida estava ____, mas não comeu muito, porque estava se sentido ____.",
-                    answers: ["bem, boa, mal", "boa, boa, mal", "bem, boa, mau", "mau, boa, mau"],
-                    correct: 0,
-                    explanation: "\"bem\" x \"mal\" vestida (advérbio de modo que se refere à locução verbal \"estava vestida\"). A comida estava \"boa\" x \"ruim\" (adjetivo que caracteriza o substantivo comida). Estava se sentido \"bem\" x \"mal\" (advérbio de modo que se refere à locução verbal \"estava se sentindo\")"
-                }
+            icon:"🧭", title:"Advérbio e Locução Adverbial", svg:"",
+            content:`<h3>🧭 Advérbios</h3><p>Advérbios são palavras que modificam o sentido de outras palavras, principalmente dos verbos, indicando circunstâncias como tempo, modo e lugar.</p><p>Características principais:<ui><li><strong>São invariáveis</strong>: não mudam em gênero (feminino/masculino) e número (singular/plural);</li><li><strong>Modificam o sentido</strong>: quando acrescentados, enriquecem a informação da frase;</li><li><strong>Expressam circunstâncias</strong>: indicam tempo, lugar, modo, afirmação, negação, dúvida, entre outras;</li></ui></p><br><h3>🗺️ Locuções adverbiais</h3><p>Locuções adverbiais são grupos de palavras que exercem a função de advérbio. Elas também podem indicar circunstâncias de tempo, modo e lugar.</p><p>Exemplos: <strong>ontem</strong> (tempo), <strong>cuidadosamente</strong> (modo), <strong>aqui</strong> (lugar), <strong>de manhã</strong> (tempo) e <strong>em silêncio</strong> (modo).</p>`,
+            questions:[
+                {id:"pt-06",difficulty:"easy",learningObjective:"Compreender o papel dos advérbios e das locuções adverbiais na construção das circunstâncias de tempo, modo e lugar, empregando-os para ampliar o sentido de frases e textos.",question:"Na frase \"Mal caminhou silenciosamente pelo corredor\", qual palavra indica o modo como Mal caminhou?",answers:["Mal","caminhou","silenciosamente","corredor"],correct:2,explanation:"\"Silenciosamente\" é um advérbio de modo, pois informa como Mal realizou a ação de caminhar."},
+                {id:"pt-07",difficulty:"medium",learningObjective:"Compreender o papel dos advérbios e das locuções adverbiais na construção das circunstâncias de tempo, modo e lugar, empregando-os para ampliar o sentido de frases e textos.",question:"Na frase \"Evie chegou de manhã apressadamente.\", qual é a locução adverbial e o que ela indica?",answers:["\"de manhã\"; indica tempo.","\"apressadamente\"; indica modo.","\"Evie chegou\"; indica lugar.","\"manhã\"; indica lugar."],correct:0,explanation:"\"De manhã\" é uma locução adverbial de tempo, pois informa quando Evie chegou."},
+                {id:"pt-08",difficulty:"hard",learningObjective:"Compreender o papel dos advérbios e das locuções adverbiais na construção das circunstâncias de tempo, modo e lugar, empregando-os para ampliar o sentido de frases e textos.",question:"Compare: \"Red procurou a chave\" e \"Red procurou a chave cuidadosamente\". O que a palavra acrescentada modifica no sentido da frase?",answers:["Indica o modo como Red realizou a ação.","Indica o lugar onde Red estava.","Indica o tempo em que a chave foi encontrada.","Muda a personagem que realizou a ação."],correct:0,explanation:"\"Cuidadosamente\" acrescenta uma circunstância de modo, explicando como Red realizou a ação de procurar."},
+                {id:"pt-09",difficulty:"hard",learningObjective:"Compreender o papel dos advérbios e das locuções adverbiais na construção das circunstâncias de tempo, modo e lugar, empregando-os para ampliar o sentido de frases e textos.",question:"Na frase \"Da sala saíram três jovens\", qual locução adverbial de tempo poderia ser acrescentada para tornar a informação mais completa?",answers:["rapidamente","em frente à janela","naquele momento","com medo"],correct:2,explanation:"\"naquele momento\" acrescenta uma circunstância de tempo, explicando quando elas saíram da sala."},
+                {id:"pt-10",difficulty:"easy",learningObjective:"Compreender o papel dos advérbios e das locuções adverbiais na construção das circunstâncias de tempo, modo e lugar, empregando-os para ampliar o sentido de frases e textos.",question:"Qual é a principal função dos advérbios em uma frase?",answers:["Tornar a frase essencial e obrigatória.","Complementar e modificar o significado, incluindo novas circunstâncias.","Substituir os verbos na construção das frases.","Flexionar em gênero e número conforme o contexto."],correct:1,explanation:"Os advérbios são palavras que, embora não sejam essenciais para que as frases façam sentido, complementam e modificam o significado das frases quando acrescentados a elas. São considerados termos acessórios que incluem novas circunstâncias aos textos."}
             ]
         },
         {
-            icon: "⏳", title: "Há ou A?", svg: "",
-            content: `<h3>⏳ Há e a</h3><p><strong>Há</strong> é uma forma do verbo haver. Pode indicar tempo passado ou existência.</p><p>A palavra <strong>a</strong> pode ter diferentes funções. Pode ser artigo, pronome ou preposição, dependendo da frase.</p>`,
-            questions: [
-                {
-                    id: "pt-07",
-                    difficulty: "easy",
-                    learningObjective: "Identificar e utilizar corretamente há como verbo.",
-                    question: "Complete: \"_____ três dias, a coroa desapareceu da sala do trono.\"",
-                    answers: ["A", "Há", "Ah", "À"],
-                    correct: 1,
-                    explanation: "Há é usado para indicar tempo passado: há três dias."
-                },
-                {
-                    id: "pt-08",
-                    difficulty: "medium",
-                    learningObjective: "Identificar e utilizar corretamente a como preposição.",
-                    question: "Em qual frase a palavra \"a\" funciona como preposição?",
-                    answers: ["A coroa estava na caixa.", "Red foi a Auradon para investigar.", "A fita azul estava atrás da cortina.", "A personagem encontrou o livro."],
-                    correct: 1,
-                    explanation: "Em \"foi a Auradon\", a palavra a liga o verbo foi ao lugar Auradon, funcionando como preposição."
-                },
-                {
-                    id: "pt-09",
-                    difficulty: "hard",
-                    learningObjective: "Identificar e utilizar corretamente a como artigo, preposição e pronome, diferenciando seus usos de há.",
-                    question: "Observe a frase: \"A personagem foi a Auradon e a encontrou no castelo.\" Quais são as funções das três ocorrências de \"a\"?",
-                    answers: ["O primeiro \"a\" é artigo; o segundo é preposição; o terceiro é pronome.", "O primeiro \"a\" é preposição; o segundo é artigo; o terceiro é pronome.", "O primeiro \"a\" é artigo; o segundo é artigo; o terceiro é preposição.", "Os três \"a\" são artigos."],
-                    correct: 0,
-                    explanation: "Em \"A personagem\", \"a\" é artigo. Em \"foi a Auradon\", \"a\" é preposição. Em \"a encontrou\", \"a\" é pronome, pois substitui a pessoa ou coisa encontrada."
-                }
+            icon:"📍", title:"Onde, Aonde, Mal e Mau", svg:"",
+            content:`<h3>📍 Onde e aonde</h3><p><strong>Onde</strong> é usado para indicar localização ou permanência. <strong>Aonde</strong> é usado quando há ideia de movimento ou destino, geralmente acompanhando verbos que indicam deslocamento.</p><h3>⚖️ Mal e mau</h3><p><strong>Mal</strong> é o contrário de <strong>bem</strong>. <strong>Mau</strong> é o contrário de <strong>bom</strong>. Observar a palavra que pode fazer oposição ajuda a escolher a forma correta.</p>`,
+            questions:[
+                {id:"pt-11",difficulty:"easy",learningObjective:"Aplicar as regras de uso de onde e aonde, distinguindo situações que indicam localização ou permanência daquelas que expressam movimento ou destino, e diferenciar o uso de mal e mau em diferentes contextos.",question:"Complete corretamente: \"_____ as meninas encontraram a caixa misteriosa?\"",answers:["Aonde","Onde","Mal","Mau"],correct:1,explanation:"Usamos \"onde\" porque a pergunta procura saber o local em que as meninas encontraram a caixa, sem indicar movimento."},
+                {id:"pt-12",difficulty:"medium",learningObjective:"Aplicar as regras de uso de onde e aonde, distinguindo situações que indicam localização ou permanência daquelas que expressam movimento ou destino, e diferenciar o uso de mal e mau em diferentes contextos.",question:"Complete corretamente: \"_____ Red vai depois da aula?\"",answers:["Onde","Aonde","Mal","Mau"],correct:1,explanation:"Usamos \"aonde\" porque a pergunta apresenta ideia de movimento ou destino: para qual lugar Red vai."},
+                {id:"pt-13",difficulty:"hard",learningObjective:"Aplicar as regras de uso de onde e aonde, distinguindo situações que indicam localização ou permanência daquelas que expressam movimento ou destino, e diferenciar o uso de mal e mau em diferentes contextos.",question:"Qual alternativa completa corretamente as duas frases? \"O castelo _____ as meninas estavam era antigo. O lugar _____ elas foram depois ficava perto da floresta.\"",answers:["aonde / onde","onde / aonde","mal / mau","mau / mal"],correct:1,explanation:"Na primeira frase há ideia de localização: onde estavam. Na segunda, há ideia de movimento e destino: aonde foram."}
             ]
         },
         {
-            icon: "🔄", title: "Formas Nominais do Verbo", svg: "",
-            content: `<h3>🔄 Infinitivo, gerúndio e particípio</h3><p>As formas nominais do verbo são <strong>infinitivo</strong>, <strong>gerúndio</strong> e <strong>particípio</strong>.</p>`,
-            questions: [
-                {
-                    id: "pt-10",
-                    difficulty: "easy",
-                    learningObjective: "Reconhecer e identificar infinitivo, gerúndio e particípio.",
-                    question: "Qual alternativa apresenta, nessa ordem, um verbo no infinitivo, um no gerúndio e um no particípio?",
-                    answers: ["investigar – investigando – investigado", "investigando – investigar – investigado", "investigado – investigando – investigar", "investigar – investigado – investigando"],
-                    correct: 0,
-                    explanation: "Investigar está no infinitivo, investigando está no gerúndio e investigado está no particípio."
-                },
-                {
-                    id: "pt-11",
-                    difficulty: "medium",
-                    learningObjective: "Compreender as funções das formas nominais do verbo em diferentes contextos.",
-                    question: "Na frase \"Red estava investigando o corredor quando encontrou a pista\", a palavra \"investigando\" está em qual forma nominal e o que ela indica?",
-                    answers: ["Infinitivo; indica apenas o nome da ação.", "Gerúndio; indica uma ação que estava acontecendo.", "Particípio; indica uma ação concluída.", "Infinitivo; indica uma ação já terminada."],
-                    correct: 1,
-                    explanation: "\"Investigando\" está no gerúndio e, nesse contexto, indica uma ação que estava em desenvolvimento."
-                },
-                {
-                    id: "pt-12",
-                    difficulty: "hard",
-                    learningObjective: "Compreender as funções das formas nominais do verbo em diferentes contextos.",
-                    question: "Qual opção completa corretamente as definições sobre as formas nominais do verbo. ___________: forma simples do verbo, indica o nome do ação. ___________: expressa uma ação contínua. ___________: expressa o resultado de uma ação, estado ou fenômeno da natureza.",
-                    answers: ["Gerúndio, Particípio, Infinitivo", "Infinitivo, Particípio, Gerúndio", "Particípio, Infinitivo, Gerúndio", "Infinitivo, Gerúndio, Particípio"],
-                    correct: 3,
-                    explanation: "Infinitivo: forma simples do verbo, reconhecida pelas terminações -ar, -er, ir. Gerúndio: expressa uma ação contínua, apresenta as terminações -ando, -endo, -indo. Particípio: expressa o resultado de uma ação, estado ou fenômeno da natureza e apresenta as seguintes terminações: -ado, -ido."
-                }
+            icon:"🔤", title:"Palavras Homônimas", svg:"",
+            content:`<h3>🔤 O que são palavras homônimas?</h3><p>Palavras homônimas podem apresentar a mesma pronúncia ou a mesma escrita, mas possuem significados diferentes. Para compreender qual significado está sendo usado, é importante observar o contexto da frase.</p><h3>🧩 O contexto ajuda</h3><p>Uma mesma palavra pode participar de situações diferentes. Observar as palavras que aparecem ao seu redor ajuda a entender o sentido pretendido.</p>`,
+            questions:[
+                {id:"pt-14",difficulty:"easy",learningObjective:"Analisar palavras homônimas em diferentes contextos, comparando seus significados e reconhecendo a influência do contexto na construção do sentido.",question:"Observe: \"A manga do vestido rasgou\" e \"Uma comeu uma manga no café da manhã\". A palavra \"manga\" apresenta sentidos diferentes. O que permite identificar cada significado?",answers:["O contexto em que a palavra aparece.","A quantidade de letras da palavra.","O tamanho das frases.","A pontuação usada no final."],correct:0,explanation:"O contexto mostra o significado da palavra. Na primeira frase, manga é parte da roupa; na segunda, é uma fruta."},
+                {id:"pt-15",difficulty:"medium",learningObjective:"Analisar palavras homônimas em diferentes contextos, comparando seus significados e reconhecendo a influência do contexto na construção do sentido.",question:"Em qual alternativa a palavra destacada apresenta sentidos diferentes nas duas frases?",answers:["\"A vela iluminou a sala.\" e \"O barco usou a vela para navegar.\"","\"Red abriu a porta.\" e \"Red fechou a porta.\"","\"Evie leu o livro.\" e \"Evie guardou o livro.\"","\"Uma encontrou a chave.\" e \"Uma perdeu a chave.\""],correct:0,explanation:"Na primeira frase, \"vela\" é um objeto usado para iluminar. Na segunda, é a parte do barco usada para aproveitar o vento."},
+                {id:"pt-16",difficulty:"hard",learningObjective:"Analisar palavras homônimas em diferentes contextos, comparando seus significados e reconhecendo a influência do contexto na construção do sentido.",question:"Leia: \"Mal viu o banco, sentou-se para descansar. Depois, foi ao banco retirar dinheiro.\" Por que a palavra \"banco\" apresenta sentidos diferentes?",answers:["Porque o contexto indica que, na primeira frase, é um assento e, na segunda, é uma instituição financeira.","Porque a palavra muda de escrita na segunda frase.","Porque toda palavra com poucas letras possui dois significados.","Porque \"banco\" é um verbo na primeira frase."],correct:0,explanation:"O contexto permite identificar os dois sentidos de \"banco\": assento na primeira situação e instituição financeira na segunda."}
             ]
         },
         {
-            icon: "🎬", title: "Verbo e Locução Verbal", svg: "",
-            content: `<h3>🎬 Verbo</h3><p>O verbo pode indicar ação, estado ou acontecimento.</p><h3>🎭 Locução verbal</h3><p>A locução verbal é formada por dois ou mais verbos que trabalham juntos para expressar uma única ação ou ideia verbal.</p>`,
-            questions: [
-                {
-                    id: "pt-13",
-                    difficulty: "easy",
-                    learningObjective: "Reconhecer a locução verbal.",
-                    question: "Qual expressão é uma locução verbal?",
-                    answers: ["encontrou a pista", "vai investigar", "a pista azul", "muito rapidamente"],
-                    correct: 1,
-                    explanation: "\"Vai investigar\" é formada por dois verbos que trabalham juntos para indicar uma ação."
-                },
-                {
-                    id: "pt-14",
-                    difficulty: "medium",
-                    learningObjective: "Diferenciar locução verbal de outras classes gramaticais e construções.",
-                    question: "Na frase \"Evie estava procurando a chave\", por que \"estava procurando\" é uma locução verbal?",
-                    answers: ["Porque reúne um verbo auxiliar e uma forma nominal do verbo.", "Porque reúne um substantivo e um adjetivo.", "Porque todas as palavras da frase são verbos.", "Porque \"procurando\" é um advérbio."],
-                    correct: 0,
-                    explanation: "\"Estava\" funciona como verbo auxiliar e \"procurando\" está no gerúndio. Juntos, formam uma locução verbal."
-                }
+            icon:"✨", title:"Acentuação Gráfica", svg:"",
+            content:`<h3>✨ Oxítonas, paroxítonas e proparoxítonas</h3><p>As palavras podem ser classificadas de acordo com a posição da sílaba tônica: <strong>oxítonas</strong> têm a última sílaba como tônica; <strong>paroxítonas</strong> têm a penúltima; <strong>proparoxítonas</strong> têm a antepenúltima.</p><p>As regras de acentuação determinam quais palavras devem receber acento gráfico. Todas as proparoxítonas são acentuadas.</p><h3>🔎 Acento diferencial</h3><p>O acento diferencial é usado em alguns casos para distinguir palavras que apresentam a mesma escrita, mas possuem funções ou sentidos diferentes, como <strong>pôde</strong> e <strong>pode</strong>, ou <strong>pôr</strong> e <strong>por</strong>.</p>`,
+            questions:[
+                {id:"pt-17",difficulty:"easy",learningObjective:"Aplicar as regras de acentuação gráfica em palavras oxítonas, paroxítonas e proparoxítonas, reconhecendo também os casos de acento diferencial.",question:"Qual alternativa apresenta uma palavra proparoxítona?",answers:["café","árvore","médico","também"],correct:2,explanation:"\"Médico\" é proparoxítona porque a sílaba tônica é a antepenúltima: MÉ-di-co. As palavras proparoxítonas são sempre acentuadas."},
+                {id:"pt-18",difficulty:"medium",learningObjective:"Aplicar as regras de acentuação gráfica em palavras oxítonas, paroxítonas e proparoxítonas, reconhecendo também os casos de acento diferencial.",question:"Qual alternativa apresenta apenas palavras oxítonas?",answers:["café, cipó, também","árvore, fácil, lápis","médico, lâmpada, mágico","mesa, casa, escola"],correct:0,explanation:"Em café, cipó e também, a sílaba tônica é a última, portanto são palavras oxítonas."},
+                {id:"pt-19",difficulty:"hard",learningObjective:"Aplicar as regras de acentuação gráfica em palavras oxítonas, paroxítonas e proparoxítonas, reconhecendo também os casos de acento diferencial.",question:"Qual alternativa usa corretamente o acento diferencial?",answers:["\"Ontem ela pode ir ao castelo, mas hoje não pode.\"","\"Ontem ela pôde ir ao castelo, mas hoje não pode.\"","\"Ela pôde o livro sobre a mesa.\"","\"Ela vai pôde investigar amanhã.\""],correct:1,explanation:"\"Pôde\" indica uma ação no passado, enquanto \"pode\" indica presente. O acento diferencial ajuda a distinguir essas formas."}
             ]
         },
         {
-            icon: "🌙", title: "Verbos Impessoais", svg: "",
-            content: `<h3>🌙 O que são verbos impessoais?</h3><p>Verbos impessoais são aqueles que, em determinados usos, não apresentam sujeito. Por isso, aparecem normalmente na terceira pessoa do singular.</p>`,
-            questions: [
-                {
-                    id: "pt-15",
-                    difficulty: "medium",
-                    learningObjective: "Identificar verbos impessoais em frases e textos.",
-                    question: "Em qual frase o verbo \"haver\" é usado de forma impessoal?",
-                    answers: ["Há três dias começou a investigação.", "As meninas encontraram a pista.", "Red observou a janela.", "Evie resolveu o mistério."],
-                    correct: 0,
-                    explanation: "Em \"Há três dias\", o verbo haver indica tempo passado e é usado de forma impessoal."
-                },
-                {
-                    id: "pt-16",
-                    difficulty: "medium",
-                    learningObjective: "Identificar verbos impessoais em frases e textos.",
-                    question: "Em qual opção o verbo impessoal indicado entre parênteses está correto.",
-                    answers: ["Quando Mal chegou, era 9 horas. (ser)", "Haviam várias pistas na sala. (haver)", "Haverá muitos alunos no baile da coroa. (haver)", "Haverão muitos alunos no baile da coroa. (haver)"],
-                    correct: 2,
-                    explanation: "O ver \"ser\" indicando tempo é impessoal e deve concordar com a quantidade de horas. O verbo \"haver\" com sentido de existir é impessoal e permanece sempre no singular."
-                },
-                {
-                    id: "pt-17",
-                    difficulty: "hard",
-                    learningObjective: "Identificar verbos impessoais em diferentes contextos.",
-                    question: "Qual frase apresenta corretamente um verbo impessoal indicando tempo decorrido?",
-                    answers: ["Faz dois dias que a coroa desapareceu.", "Fazem dois dias que a coroa desapareceu.", "Fazem duas personagens que investigaram a sala.", "Faz as personagens investigarem a sala."],
-                    correct: 0,
-                    explanation: "Quando fazer indica tempo decorrido, é impessoal e permanece no singular: \"Faz dois dias...\"."
-                }
-            ]
-        },
-        {
-            icon: "🧭", title: "Advérbios e Locuções Adverbiais", svg: "",
-            content: `<h3>🧭 Advérbios</h3><p>Advérbios são palavras que podem modificar o sentido de um verbo, indicando circunstâncias como tempo, lugar, modo ou intensidade.</p><h3>🗺️ Locuções adverbiais</h3><p>Locuções adverbiais são grupos de palavras que exercem a função de advérbio.</p>`,
-            questions: [
-                {
-                    id: "pt-18",
-                    difficulty: "medium",
-                    learningObjective: "Identificar e classificar advérbios para modificar o sentido de verbos.",
-                    question: "Na frase \"Red investigou cuidadosamente a sala\", qual é o advérbio e o que ele indica?",
-                    answers: ["Red; indica lugar.", "investigou; indica tempo.", "cuidadosamente; indica modo.", "sala; indica intensidade."],
-                    correct: 2,
-                    explanation: "\"Cuidadosamente\" é um advérbio de modo, pois explica como Red realizou a ação de investigar."
-                },
-                {
-                    id: "pt-19",
-                    difficulty: "easy",
-                    learningObjective: "Identificar e classificar locuções adverbiais para modificar o sentido de verbos.",
-                    question: "Na frase \"Evie chegou de manhã para investigar o mistério\", qual é a locução adverbial e o que ela indica?",
-                    answers: ["\"de manhã\"; indica tempo.", "\"para investigar\"; indica lugar.", "\"Evie chegou\"; indica modo.", "\"o mistério\"; indica intensidade."],
-                    correct: 0,
-                    explanation: "\"De manhã\" é uma locução adverbial de tempo, pois indica quando Evie chegou."
-                }
+            icon:"🔗", title:"Pronomes Relativos", svg:"",
+            content:`<h3>🔗 O que são pronomes relativos?</h3><p>Pronomes relativos retomam uma palavra ou ideia apresentada anteriormente e ajudam a ligar informações, contribuindo para a coesão do texto.</p><h3>📍 Onde, que e quem</h3><p><strong>Onde</strong> pode retomar um lugar; <strong>que</strong> pode retomar pessoas, animais ou coisas; <strong>quem</strong> é usado principalmente para retomar pessoas.</p>`,
+            questions:[
+                {id:"pt-20",difficulty:"easy",learningObjective:"Empregar pronomes relativos, como onde, que e quem, na construção da coesão textual.",question:"Complete: \"O castelo _____ as meninas estudaram ficava perto da floresta.\"",answers:["quem","que","onde","mal"],correct:2,explanation:"Usamos \"onde\" porque o pronome relativo retoma o lugar: o castelo onde as meninas estudaram."},
+                {id:"pt-21",difficulty:"medium",learningObjective:"Empregar pronomes relativos, como onde, que e quem, na construção da coesão textual.",question:"Una as frases usando um pronome relativo: \"Evie encontrou uma chave. A chave estava atrás da cortina.\"",answers:["Evie encontrou uma chave quem estava atrás da cortina.","Evie encontrou uma chave que estava atrás da cortina.","Evie encontrou uma chave onde estava atrás da cortina.","Evie encontrou uma chave aonde estava atrás da cortina."],correct:1,explanation:"\"Que\" retoma \"uma chave\" e une as duas informações em uma única construção mais coesa."},
+                {id:"pt-22",difficulty:"hard",learningObjective:"Empregar pronomes relativos, como onde, que e quem, na construção da coesão textual.",question:"Qual alternativa emprega corretamente um pronome relativo para evitar a repetição?",answers:["Red encontrou a menina quem conhecia a passagem secreta.","Red encontrou a menina onde conhecia a passagem secreta.","Red encontrou a menina que conhecia a passagem secreta.","Red encontrou a menina aonde conhecia a passagem secreta."],correct:2,explanation:"\"Que\" retoma \"a menina\" e conecta as duas informações. A construção fica mais coesa e evita a repetição desnecessária."}
             ]
         }
     ]

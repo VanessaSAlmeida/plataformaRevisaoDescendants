@@ -66,7 +66,7 @@ const difficultyStats = {
 
 const subjects = {
     matematica: {name: "➕ Matemática", file: "data/matematica.js", available: false},
-    portugues: {name: "📖 Português", file: "data/portugues.js", available: false},
+    portugues: {name: "📖 Português", file: "data/portugues.js", available: true},
     ciencias: {name: "🧪 Ciências", file: "data/ciencias.js", available: false},
     historia: {name: "🏺 História", file: "data/historia.js", available: false},
     geografia: {name: "🌎 Geografia", file: "data/geografia.js", available: true},
